@@ -17,140 +17,52 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5T9J9LD3');</script>
 <!-- End Google Tag Manager -->
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Collection — HOROLOGIUM Fine Timepieces</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-  <style>
-    .filter-bar {
-      padding: 28px 52px;
-      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-      position: sticky; top: 70px; z-index: 100;
-    }
-    .filter-label {
-      font-family: var(--font-ui);
-      font-size: 0.58rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-right: 8px;
-    }
-    .filter-btn {
-      padding: 8px 20px;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-family: var(--font-ui);
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all var(--transition);
-      border-radius: var(--radius);
-    }
-    .filter-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
-    .filter-btn.active { border-color: var(--gold); color: var(--gold); background: var(--gold-glow); }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Collection — HOROLOGIUM Fine Timepieces</title>
+<link rel="stylesheet" href="style.css"/>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<style>
+.filter-bar{padding:22px 52px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:68px;z-index:100}
+.filter-label{font-family:var(--fu);font-size:.57rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.filter-btn{padding:8px 18px;background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--fu);font-size:.58rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .25s;border-radius:2px}
+.filter-btn:hover,.filter-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold-g)}
+.sort-wrap{margin-left:auto;display:flex;align-items:center;gap:10px}
+.sort-wrap label{font-family:var(--fu);font-size:.57rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.sort-sel{background:var(--card);border:1px solid var(--border);color:var(--text);padding:7px 30px 7px 12px;font-family:var(--fu);font-size:.6rem;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a84c'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;transition:border-color .25s}
+.sort-sel:focus{border-color:var(--gold-d)}
+.grid-wrap{padding:44px 52px}
+.result-count{font-family:var(--fu);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.result-count span{color:var(--gold)}
 
-    .sort-wrap {
-      margin-left: auto;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .sort-wrap label {
-      font-family: var(--font-ui);
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .sort-select {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 7px 32px 7px 12px;
-      font-family: var(--font-ui);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      outline: none;
-      cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a84c'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      transition: border-color var(--transition);
-    }
-    .sort-select:focus { border-color: var(--gold-dim); }
+/* Modal */
+.modal-bg{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.88);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:var(--card);border:1px solid var(--borderl);max-width:820px;width:100%;max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:310px 1fr}
+.modal-img{background:#030201;display:flex;align-items:center;justify-content:center;padding:36px;position:relative;flex-direction:column;gap:12px}
+.modal-close{position:absolute;top:12px;right:12px;background:none;border:1px solid var(--border);color:var(--muted);width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.8rem;cursor:pointer;transition:all .25s}
+.modal-close:hover{border-color:var(--gold);color:var(--gold)}
+.modal-body{padding:40px 36px}
+.m-brand{font-family:var(--fu);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.m-name{font-family:var(--fd);font-size:1.7rem;color:var(--cream);line-height:1.2;margin-bottom:5px}
+.m-ref{font-family:var(--fu);font-size:.58rem;color:var(--muted);letter-spacing:.1em;margin-bottom:16px}
+.m-desc{font-size:.97rem;color:var(--muted);font-weight:300;line-height:1.85;margin-bottom:22px}
+.m-specs{border-top:1px solid var(--border);padding-top:20px;margin-bottom:22px}
+.spec-row{display:flex;justify-content:space-between;margin-bottom:10px;font-size:.88rem}
+.spec-row span:first-child{color:var(--muted);font-weight:300}
+.spec-row span:last-child{color:var(--text);font-family:var(--fu);font-size:.74rem;text-align:right;max-width:55%}
+.m-price{font-family:var(--fd);font-size:1.9rem;color:var(--gold);margin-bottom:8px}
+.m-gst{font-family:var(--fu);font-size:.55rem;color:var(--muted);letter-spacing:.1em;margin-bottom:20px}
+.m-actions{display:flex;gap:10px;flex-wrap:wrap}
 
-    .grid-wrap { padding: 52px 52px; }
-    .result-count {
-      font-family: var(--font-ui);
-      font-size: 0.62rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-    .result-count span { color: var(--gold); }
-
-    /* Detail modal */
-    .modal-overlay {
-      position: fixed; inset: 0; z-index: 2000;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(6px);
-      display: none; align-items: center; justify-content: center;
-      padding: 20px;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal {
-      background: var(--card);
-      border: 1px solid var(--border-gold);
-      max-width: 820px; width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      display: grid;
-      grid-template-columns: 320px 1fr;
-    }
-    .modal-img {
-      background: radial-gradient(ellipse at center, var(--bg) 0%, #030201 100%);
-      display: flex; align-items: center; justify-content: center;
-      padding: 40px;
-      position: relative;
-    }
-    .modal-body { padding: 44px 40px; }
-    .modal-brand {
-      font-family: var(--font-ui); font-size: 0.58rem; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
-    }
-    .modal-name { font-family: var(--font-display); font-size: 1.8rem; color: var(--cream); line-height: 1.2; margin-bottom: 6px; }
-    .modal-ref { font-family: var(--font-ui); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 20px; }
-    .modal-desc { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.85; margin-bottom: 28px; }
-    .modal-specs { border-top: 1px solid var(--border); padding-top: 24px; margin-bottom: 28px; }
-    .spec-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; }
-    .spec-row span:first-child { color: var(--muted); font-weight: 300; }
-    .spec-row span:last-child { color: var(--text); font-family: var(--font-ui); font-size: 0.75rem; text-align: right; max-width: 55%; }
-    .modal-price { font-family: var(--font-display); font-size: 2rem; color: var(--gold); margin-bottom: 24px; }
-    .modal-actions { display: flex; gap: 12px; }
-    .modal-close {
-      position: absolute; top: 14px; right: 14px;
-      background: none; border: 1px solid var(--border);
-      color: var(--muted); width: 30px; height: 30px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; cursor: pointer; transition: all var(--transition);
-    }
-    .modal-close:hover { border-color: var(--gold); color: var(--gold); }
-    @media(max-width:768px){
-      .modal { grid-template-columns: 1fr; }
-      .modal-img { min-height: 240px; }
-      .filter-bar { padding: 20px 20px; }
-      .grid-wrap { padding: 32px 20px; }
-      .sort-wrap { margin-left: 0; width: 100%; }
-    }
-  </style>
+@media(max-width:768px){
+  .modal{grid-template-columns:1fr}
+  .modal-img{min-height:220px}
+  .filter-bar{padding:16px 20px}
+  .grid-wrap{padding:28px 20px}
+  .sort-wrap{margin-left:0;width:100%}
+}
+</style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -158,10 +70,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="toast-global"><span>✦</span><span class="toast-msg"></span></div>
 
-<div id="toast-global"><span class="toast-icon">✦</span><span class="toast-msg"></span></div>
-
-<!-- NAV -->
 <nav class="nav">
   <a href="index.html" class="nav-logo">HOROLOGIUM</a>
   <ul class="nav-links">
@@ -171,194 +81,182 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="contactus.html">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <a href="cart.html" class="nav-cart-btn btn">Cart <span class="cart-count">0</span></a>
+    <a href="cart.html" class="nav-cart-btn">Cart <span class="cart-count">0</span></a>
   </div>
 </nav>
 
-<!-- PAGE HERO -->
 <div class="pt-nav">
   <div class="page-hero">
     <div class="eyebrow">The Collection · 20 Timepieces</div>
-    <h1 class="display-title" style="font-size:clamp(2.5rem,5vw,4rem);margin-top:16px;">
-      Extraordinary <em>Timepieces</em>
-    </h1>
-    <p class="body-text" style="max-width:520px;margin-top:16px;">
-      Each watch in our collection represents decades of horological tradition. Explore, discover, and find the timepiece that speaks to you.
-    </p>
+    <h1 class="display-title" style="font-size:clamp(2.2rem,5vw,3.8rem);margin-top:14px;">Extraordinary <em>Timepieces</em></h1>
+    <p class="body-text" style="max-width:500px;margin-top:14px;">Each watch represents decades of horological tradition. Prices shown include 18% GST.</p>
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" data-cat="all"       onclick="applyFilter(this)">All (20)</button>
+    <button class="filter-btn"        data-cat="dress"      onclick="applyFilter(this)">Dress</button>
+    <button class="filter-btn"        data-cat="sport"      onclick="applyFilter(this)">Sport</button>
+    <button class="filter-btn"        data-cat="chronograph"onclick="applyFilter(this)">Chronograph</button>
+    <button class="filter-btn"        data-cat="heritage"   onclick="applyFilter(this)">Heritage</button>
+    <button class="filter-btn"        data-cat="limited"    onclick="applyFilter(this)">Limited Edition</button>
+    <div class="sort-wrap">
+      <label for="sortSel">Sort by:</label>
+      <select class="sort-sel" id="sortSel" onchange="applySort()">
+        <option value="default">Featured</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="name">Name A–Z</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid-wrap">
+    <div class="result-count">Showing <span id="rCount">20</span> timepieces</div>
+    <div class="watches-grid" id="wGrid"></div>
   </div>
 </div>
 
-<!-- FILTER BAR -->
-<div class="filter-bar">
-  <span class="filter-label">Filter:</span>
-  <button class="filter-btn active" onclick="applyFilter('all',this)">All (20)</button>
-  <button class="filter-btn" onclick="applyFilter('dress',this)">Dress</button>
-  <button class="filter-btn" onclick="applyFilter('sport',this)">Sport</button>
-  <button class="filter-btn" onclick="applyFilter('chronograph',this)">Chronograph</button>
-  <button class="filter-btn" onclick="applyFilter('heritage',this)">Heritage</button>
-  <button class="filter-btn" onclick="applyFilter('limited',this)">Limited Edition</button>
-  <div class="sort-wrap">
-    <label for="sortSel">Sort:</label>
-    <select class="sort-select" id="sortSel" onchange="applySort()">
-      <option value="default">Featured</option>
-      <option value="price-asc">Price: Low → High</option>
-      <option value="price-desc">Price: High → Low</option>
-      <option value="name">Name A–Z</option>
-    </select>
-  </div>
-</div>
-
-<!-- GRID -->
-<div class="grid-wrap">
-  <div class="result-count">Showing <span id="countNum">20</span> timepieces</div>
-  <div class="watches-grid" id="watchGrid"></div>
-</div>
-
-<!-- DETAIL MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg" onclick="closeBg(event)">
   <div class="modal" id="modalBox">
-    <div class="modal-img" id="modalImg">
+    <div class="modal-img" id="mImg">
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-brand" id="mBrand"></div>
-      <div class="modal-name"  id="mName"></div>
-      <div class="modal-ref"   id="mRef"></div>
-      <div class="modal-desc"  id="mDesc"></div>
-      <div class="modal-specs">
-        <div class="spec-row"><span>Movement</span><span id="mMovement"></span></div>
-        <div class="spec-row"><span>Case</span><span id="mCase"></span></div>
-        <div class="spec-row"><span>Water Resistance</span><span id="mWater"></span></div>
+      <div class="m-brand" id="mBrand"></div>
+      <div class="m-name"  id="mName"></div>
+      <div class="m-ref"   id="mRef"></div>
+      <div class="m-desc"  id="mDesc"></div>
+      <div class="m-specs">
+        <div class="spec-row"><span>Movement</span><span id="mMv"></span></div>
+        <div class="spec-row"><span>Case Size</span><span id="mSz"></span></div>
+        <div class="spec-row"><span>Water Resistance</span><span id="mWr"></span></div>
         <div class="spec-row"><span>Category</span><span id="mCat"></span></div>
       </div>
-      <div class="modal-price" id="mPrice"></div>
-      <div class="modal-actions">
+      <div class="m-price" id="mPrice"></div>
+      <div class="m-gst">Price inclusive of 18% GST</div>
+      <div class="m-actions">
         <button class="btn btn-gold btn-sm" id="mCartBtn">Add to Cart</button>
-        <a href="cart.html" class="btn btn-outline btn-sm">Go to Cart</a>
+        <a href="cart.html" class="btn btn-outline btn-sm">Go to Cart →</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
-    <div>
-      <div class="footer-logo">HOROLOGIUM</div>
-      <p class="footer-tagline">Extraordinary timepieces since 1977.</p>
-    </div>
-    <div class="footer-col"><h5>Collection</h5><ul>
-      <li><a href="watches.html">All Watches</a></li>
-    </ul></div>
-    <div class="footer-col"><h5>Company</h5><ul>
-      <li><a href="aboutus.html">About</a></li>
-      <li><a href="contactus.html">Contact</a></li>
-    </ul></div>
-    <div class="footer-col"><h5>Help</h5><ul>
-      <li><a href="#">Sizing Guide</a></li>
-      <li><a href="#">Authenticity</a></li>
-    </ul></div>
+    <div><div class="footer-logo">HOROLOGIUM</div><p class="footer-tagline">Extraordinary timepieces since 1977.</p></div>
+    <div class="footer-col"><h5>Collection</h5><ul><li><a href="watches.html">All Watches</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="aboutus.html">About</a></li><li><a href="contactus.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Help</h5><ul><li><a href="#">Sizing Guide</a></li><li><a href="#">Authenticity</a></li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 HOROLOGIUM SA. All Rights Reserved.</p>
-  </div>
+  <div class="footer-bottom"><p>© 2025 HOROLOGIUM SA.</p></div>
 </footer>
 
 <script src="watches-data.js"></script>
 <script>
-  var currentFilter = 'all';
-  var currentSort   = 'default';
-  var activeWatch   = null;
+var curCat  = 'all';
+var curSort = 'default';
+var openW   = null;
 
-  function buildCard(w) {
-    return '<div class="watch-card" onclick="openModal(\''+w.id+'\')" style="cursor:pointer;">'+
-      '<div class="watch-card-img" style="background:radial-gradient(ellipse at center,'+w.bg+' 0%,#030201 100%);">'+
-        generateWatchSVG(w, 150)+
-        (w.badge ? '<div class="watch-badge badge-'+w.badge+'">'+w.badge.toUpperCase()+'</div>' : '')+
+function buildCard(w) {
+  var cart   = getCart();
+  var inCart = false;
+  for (var i=0;i<cart.length;i++) { if(cart[i].id===w.id){inCart=true;break;} }
+  return '<div class="watch-card" style="cursor:pointer" onclick="openModal(\''+w.id+'\')">'+
+    '<div class="watch-card-img" style="background:radial-gradient(ellipse at center,'+w.bg+' 0%,#020100 100%);">'+
+      generateWatchSVG(w,138)+
+      (w.badge?'<div class="watch-badge badge-'+w.badge+'">'+w.badge.toUpperCase()+'</div>':'')+
+    '</div>'+
+    '<div class="watch-card-body">'+
+      '<div class="watch-card-brand">'+w.brand+'</div>'+
+      '<div class="watch-card-name">'+w.name+'</div>'+
+      '<div class="watch-card-ref">Ref. '+w.ref+' · '+w.sz+'</div>'+
+      '<div class="watch-card-desc">'+w.info+'</div>'+
+      '<div class="watch-card-footer">'+
+        '<div><div class="price-label">Price (incl. GST)</div><div class="price-val">'+fmtINR(w.price)+'</div></div>'+
+        '<button class="btn-add-cart'+(inCart?' in-cart':'')+'" data-watch-id="'+w.id+'"'+
+          ' onclick="event.stopPropagation();addToCart(\''+w.id+'\')">'+(inCart?'In Cart \u2713':'Add to Cart')+'</button>'+
       '</div>'+
-      '<div class="watch-card-body">'+
-        '<div class="watch-card-brand">'+w.brand+'</div>'+
-        '<div class="watch-card-name">'+w.name+'</div>'+
-        '<div class="watch-card-ref">Ref. '+w.ref+' · '+w.case+'</div>'+
-        '<div class="watch-card-desc">'+w.desc+'</div>'+
-        '<div class="watch-card-footer">'+
-          '<div class="watch-price-block">'+
-            '<div class="watch-price-label">Price</div>'+
-            '<div class="watch-price">'+fmtPrice(w.price)+'</div>'+
-          '</div>'+
-          '<button class="btn-add-cart" data-watch-id="'+w.id+'"'+
-            ' onclick="event.stopPropagation();addToCart(\''+w.id+'\')">Add to Cart</button>'+
-        '</div>'+
-      '</div>'+
-    '</div>';
-  }
+    '</div>'+
+  '</div>';
+}
 
-  function renderGrid() {
-    var list = WATCHES.slice();
-    if (currentFilter !== 'all') list = list.filter(function(w){ return w.category === currentFilter; });
-    if (currentSort === 'price-asc')  list.sort(function(a,b){ return a.price - b.price; });
-    if (currentSort === 'price-desc') list.sort(function(a,b){ return b.price - a.price; });
-    if (currentSort === 'name')       list.sort(function(a,b){ return a.name.localeCompare(b.name); });
-    document.getElementById('watchGrid').innerHTML = list.map(buildCard).join('');
-    document.getElementById('countNum').textContent = list.length;
-    refreshAddBtns();
-  }
+function renderGrid() {
+  var list = WATCHES.slice();
+  if (curCat !== 'all') list = list.filter(function(w){ return w.cat === curCat; });
+  if (curSort==='price-asc')  list.sort(function(a,b){ return a.price-b.price; });
+  if (curSort==='price-desc') list.sort(function(a,b){ return b.price-a.price; });
+  if (curSort==='name')       list.sort(function(a,b){ return a.name.localeCompare(b.name); });
+  document.getElementById('wGrid').innerHTML   = list.map(buildCard).join('');
+  document.getElementById('rCount').textContent = list.length;
+}
 
-  function applyFilter(cat, btn) {
-    currentFilter = cat;
-    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
+function applyFilter(btn) {
+  curCat = btn.getAttribute('data-cat');
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderGrid();
+  dlPush({ event:'filter_collection', filter_category:curCat });
+}
+
+function applySort() {
+  curSort = document.getElementById('sortSel').value;
+  renderGrid();
+}
+
+function openModal(id) {
+  var w = null;
+  for (var i=0;i<WATCHES.length;i++){ if(WATCHES[i].id===id){w=WATCHES[i];break;} }
+  if (!w) return;
+  openW = w;
+
+  var mImg = document.getElementById('mImg');
+  mImg.style.background = 'radial-gradient(ellipse at center,'+w.bg+' 0%,#020100 100%)';
+  mImg.innerHTML = '<button class="modal-close" onclick="closeModal()">✕</button>'+
+    generateWatchSVG(w, 200)+
+    '<div style="font-family:var(--fu);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);">'+w.sz+'</div>';
+
+  document.getElementById('mBrand').textContent = w.brand;
+  document.getElementById('mName').textContent  = w.name;
+  document.getElementById('mRef').textContent   = 'Ref. '+w.ref;
+  document.getElementById('mDesc').textContent  = w.info;
+  document.getElementById('mMv').textContent    = w.mv;
+  document.getElementById('mSz').textContent    = w.sz;
+  document.getElementById('mWr').textContent    = w.wr;
+  document.getElementById('mCat').textContent   = w.cat.charAt(0).toUpperCase()+w.cat.slice(1);
+  document.getElementById('mPrice').textContent = fmtINR(w.price);
+
+  var cart = getCart(), inCart = false;
+  for(var j=0;j<cart.length;j++){if(cart[j].id===w.id){inCart=true;break;}}
+  var btn = document.getElementById('mCartBtn');
+  btn.textContent = inCart ? 'In Cart \u2713' : 'Add to Cart';
+  btn.onclick = function(){
+    addToCart(w.id);
+    btn.textContent = 'In Cart \u2713';
     renderGrid();
-    dlPush({ event: 'collection_filter', filter_category: cat });
-  }
+  };
 
-  function applySort() {
-    currentSort = document.getElementById('sortSel').value;
-    renderGrid();
-  }
+  document.getElementById('modalBg').classList.add('open');
+  dlPush({ event:'view_item', ecommerce:{ currency:CURRENCY, value:w.price,
+    items:[{ item_id:w.id, item_name:w.name, item_brand:w.brand,
+             item_category:w.cat, price:w.price }] } });
+}
 
-  /* Modal */
-  function openModal(id) {
-    var w = WATCHES.find(function(x){ return x.id === id; });
-    if (!w) return;
-    activeWatch = w;
-    document.getElementById('modalImg').style.background = 'radial-gradient(ellipse at center,'+w.bg+' 0%,#030201 100%)';
-    document.getElementById('modalImg').innerHTML =
-      '<button class="modal-close" onclick="closeModal()">✕</button>'+generateWatchSVG(w, 200);
-    document.getElementById('mBrand').textContent    = w.brand;
-    document.getElementById('mName').textContent     = w.name;
-    document.getElementById('mRef').textContent      = 'Ref. '+w.ref;
-    document.getElementById('mDesc').textContent     = w.desc;
-    document.getElementById('mMovement').textContent = w.movement;
-    document.getElementById('mCase').textContent     = w.case;
-    document.getElementById('mWater').textContent    = w.water;
-    document.getElementById('mCat').textContent      = w.category.charAt(0).toUpperCase()+w.category.slice(1);
-    document.getElementById('mPrice').textContent    = fmtPrice(w.price);
-    var btn = document.getElementById('mCartBtn');
-    btn.textContent = getCart().find(function(c){ return c.id===w.id; }) ? 'In Cart ✓' : 'Add to Cart';
-    btn.onclick = function(){ addToCart(w.id); btn.textContent='In Cart ✓'; };
-    document.getElementById('modalOverlay').classList.add('open');
-    // dataLayer: view_item
-    dlPush({ event: 'view_item', ecommerce: { currency:'USD', value: w.price,
-      items:[{ item_id: w.id, item_name: w.name, item_brand: w.brand,
-               item_category: w.category, price: w.price }] } });
-  }
+function closeModal(){ document.getElementById('modalBg').classList.remove('open'); }
+function closeBg(e)  { if(e.target===document.getElementById('modalBg')) closeModal(); }
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
 
-  function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
-  function closeModalOnBg(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
-
-  /* URL param filter */
-  var urlCat = new URLSearchParams(window.location.search).get('cat');
-  if (urlCat) {
-    var matchBtn = document.querySelector('.filter-btn[onclick*="\''+urlCat+'\'"]');
-    if (matchBtn) applyFilter(urlCat, matchBtn);
-    else renderGrid();
-  } else {
-    renderGrid();
-  }
-
-  trackPageView('Collection', '/watches.html');
+// URL param
+var urlCat = new URLSearchParams(window.location.search).get('cat');
+if (urlCat) {
+  var matchBtn = document.querySelector('[data-cat="'+urlCat+'"]');
+  if (matchBtn) applyFilter(matchBtn); else renderGrid();
+} else {
+  renderGrid();
+}
+trackPageView('Collection','/watches.html');
 </script>
 </body>
 </html>
