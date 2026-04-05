@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart &amp; Checkout — HOROLOGIUM Fine Timepieces</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <style>
+    /* ================================================================
+       CART-SPECIFIC STYLES
+       ================================================================ */
+    .cart-wrap { max-width: 1200px; margin: 0 auto; padding: 60px 48px; }
+
+    /* --- VIEW PANELS --- */
+    .view-panel { display: none; }
+    .view-panel.active { display: block; }
+
+    /* --- SECTION TITLES --- */
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700; color: var(--cream); line-height: 1.1; margin-bottom: 8px;
+    }
+    .page-title em { font-style: italic; color: var(--gold); }
+    .page-subtitle { font-size: 0.92rem; color: var(--muted); margin-bottom: 44px; }
+
+    /* EMPTY STATE */
+    .empty-state {
+      text-align: center; padding: 80px 20px;
+    }
+    .empty-icon { font-size: 3rem; color: var(--gold-dim); margin-bottom: 20px; }
+    .empty-state h3 { font-family: var(--font-display); font-size: 1.8rem; color: var(--cream); margin-bottom: 10px; }
+    .empty-state p { color: var(--muted); margin-bottom: 30px; }
+
+    /* CART LAYOUT */
+    .cart-layout { display: grid; grid-template-columns: 1fr 340px; gap: 36px; align-items: start; }
+
+    /* CART ITEMS */
+    .cart-item {
+      display: grid; grid-template-columns: 86px 1fr auto;
+      gap: 20px; align-items: center;
+      padding: 20px 22px;
+      background: var(--card); border: 1px solid var(--border);
+      margin-bottom: 2px;
+      transition: border-color var(--transition);
+    }
+    .cart-item:hover { border-color: var(--border-gold); }
+    .cart-item-thumb {
+      background: radial-gradient(ellipse at center, #1a1508 0%, #06050300 100%);
+      width: 86px; height: 86px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cart-item-brand { font-family: var(--font-ui); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .cart-item-name { font-family: var(--font-display); font-size: 1.1rem; color: var(--cream); margin-bottom: 4px; }
+    .cart-item-ref { font-size: 0.82rem; color: var(--muted); font-weight: 300; }
+    .cart-item-right { text-align: right; }
+    .cart-item-price { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); margin-bottom: 10px; }
+    .btn-remove {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+      font-family: var(--font-ui); font-size: 0.52rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 5px 12px; cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-remove:hover { border-color: #cc3333; color: #cc3333; }
+
+    /* ORDER SUMMARY BOX */
+    .summary-box {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 28px 28px;
+      position: sticky; top: 88px;
+    }
+    .summary-box h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--cream); margin-bottom: 22px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .sum-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; }
+    .sum-row span:first-child { color: var(--muted); }
+    .sum-row.total { font-family: var(--font-display); font-size: 1.3rem; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .sum-row.total span:last-child { color: var(--gold); }
+
+    /* ---- CHECKOUT STEPS ---- */
+    .steps-bar {
+      display: flex; gap: 2px; margin-bottom: 44px;
+    }
+    .step-pill {
+      flex: 1; padding: 14px 18px;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-ui); font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+      transition: all var(--transition);
+    }
+    .step-pill.active  { background: var(--card); border-color: var(--gold-dim); color: var(--gold); }
+    .step-pill.done    { border-color: var(--gold-dim); color: var(--gold-dim); }
+    .step-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 1px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; flex-shrink: 0;
+    }
+    .step-pill.done .step-num::after { content: '✓'; }
+    .step-pill.done .step-num-inner { display: none; }
+
+    /* CHECKOUT GRID */
+    .checkout-layout { display: grid; grid-template-columns: 1fr 320px; gap: 36px; align-items: start; }
+    .checkout-card {
+      background: var(--card); border: 1px solid var(--border); padding: 40px;
+    }
+    .checkout-card h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--cream); margin-bottom: 6px; }
+    .checkout-card h3 em { font-style: italic; color: var(--gold); }
+    .checkout-card > p { font-size: 0.88rem; color: var(--muted); margin-bottom: 32px; }
+
+    /* PAYMENT METHOD TILES */
+    .pm-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 28px; }
+    .pm-tile {
+      border: 1px solid var(--border); padding: 16px 12px;
+      cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 7px;
+      background: var(--surface); transition: all var(--transition);
+    }
+    .pm-tile.selected { border-color: var(--gold); background: var(--gold-glow); }
+    .pm-tile-icon { font-size: 1.3rem; color: var(--gold); }
+    .pm-tile-label { font-family: var(--font-ui); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .pm-tile.selected .pm-tile-label { color: var(--gold); }
+
+    .pm-fields { display: none; }
+    .pm-fields.active { display: block; }
+
+    .bank-info, .crypto-info {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 20px; margin-bottom: 20px;
+    }
+    .bank-info p, .crypto-info p {
+      font-size: 0.88rem; color: var(--muted); font-weight: 300; line-height: 1.9;
+    }
+    .info-heading {
+      font-family: var(--font-ui); font-size: 0.55rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 10px; display: block;
+    }
+
+    /* Step back/next row */
+    .step-nav { display: flex; gap: 12px; margin-top: 24px; }
+
+    /* REVIEW BLOCK */
+    .review-block {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 24px; margin-bottom: 24px;
+    }
+    .review-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; }
+    .review-row span:first-child { color: var(--muted); font-weight: 300; min-width: 130px; }
+    .review-row span:last-child { color: var(--text); font-family: var(--font-ui); font-size: 0.78rem; text-align: right; }
+    .review-notice {
+      background: rgba(201,168,76,0.04); border: 1px solid var(--gold-dim);
+      padding: 16px 20px; margin-bottom: 24px; font-size: 0.82rem; color: var(--muted); line-height: 1.7;
+    }
+    .review-notice strong { display: block; color: var(--gold); font-family: var(--font-ui); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+
+    /* ---- SUCCESS ---- */
+    .success-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 60px 20px;
+    }
+    .success-ring {
+      width: 110px; height: 110px; border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; color: var(--gold);
+      margin-bottom: 32px;
+      animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .success-wrap h2 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3rem); color: var(--cream); margin-bottom: 10px; }
+    .success-wrap h2 em { font-style: italic; color: var(--gold); }
+    .success-wrap .s-sub { font-size: 1rem; color: var(--muted); max-width: 440px; line-height: 1.85; margin-bottom: 6px; }
+    .txn-id { font-family: var(--font-ui); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dim); margin: 16px 0 36px; }
+
+    .order-summary-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 32px 36px; text-align: left; max-width: 500px; width: 100%;
+      margin-bottom: 40px;
+    }
+    .order-summary-card h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--cream); margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .osc-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; }
+    .osc-row span:first-child { color: var(--muted); }
+    .osc-row span:last-child { color: var(--text); font-family: var(--font-ui); font-size: 0.78rem; }
+    .osc-row.grand { font-family: var(--font-display); font-size: 1.3rem; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .osc-row.grand span:last-child { color: var(--gold); }
+
+    @media(max-width:1024px){
+      .cart-layout { grid-template-columns: 1fr; }
+      .checkout-layout { grid-template-columns: 1fr; }
+      .cart-wrap { padding: 40px 24px; }
+    }
+    @media(max-width:600px){
+      .pm-grid { grid-template-columns: 1fr; }
+      .cart-item { grid-template-columns: 64px 1fr; }
+      .cart-item-right { grid-column: 1/-1; display: flex; align-items: center; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div id="toast-global"><span class="toast-icon">✦</span><span class="toast-msg"></span></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">HOROLOGIUM</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="watches.html">Collection</a></li>
+    <li><a href="aboutus.html">About</a></li>
+    <li><a href="contactus.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="cart.html" class="nav-cart-btn btn">Cart <span class="cart-count">0</span></a>
+  </div>
+</nav>
+
+<div class="pt-nav">
+<div class="cart-wrap">
+
+  <!-- ============================================================
+       PANEL 1: CART VIEW
+       ============================================================ -->
+  <div class="view-panel active" id="panelCart">
+    <h1 class="page-title">Your <em>Selection</em></h1>
+    <p class="page-subtitle">Each timepiece is held for 24 hours pending your order confirmation.</p>
+
+    <!-- EMPTY -->
+    <div id="cartEmpty" class="empty-state">
+      <div class="empty-icon">⌚</div>
+      <h3>Your cart is empty</h3>
+      <p>Discover our curated collection of extraordinary timepieces.</p>
+      <a href="watches.html" class="btn btn-gold">Explore Collection</a>
+    </div>
+
+    <!-- FILLED -->
+    <div id="cartFull" style="display:none;">
+      <div class="cart-layout">
+        <div>
+          <div id="cartItemsContainer"></div>
+        </div>
+        <div class="summary-box">
+          <h3>Order Summary</h3>
+          <div id="cartSumItems"></div>
+          <div class="sum-row"><span>Subtotal</span><span id="csSubtotal">—</span></div>
+          <div class="sum-row"><span>Tax (8%)</span><span id="csTax">—</span></div>
+          <div class="sum-row"><span>Delivery</span><span style="color:var(--gold)">Complimentary</span></div>
+          <div class="sum-row total"><span>Total</span><span id="csTotal">—</span></div>
+          <button class="btn btn-gold btn-full" style="margin-top:24px;" onclick="goCheckout()">Proceed to Checkout →</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- /panelCart -->
+
+
+  <!-- ============================================================
+       PANEL 2: CHECKOUT
+       ============================================================ -->
+  <div class="view-panel" id="panelCheckout">
+    <h1 class="page-title">Secure <em>Checkout</em></h1>
+    <p class="page-subtitle">Your connection is encrypted. Your order is insured during transit.</p>
+
+    <!-- STEP INDICATOR -->
+    <div class="steps-bar" id="stepsBar">
+      <div class="step-pill active" id="sp1">
+        <div class="step-num"><span class="step-num-inner">1</span></div>
+        Personal Details
+      </div>
+      <div class="step-pill" id="sp2">
+        <div class="step-num"><span class="step-num-inner">2</span></div>
+        Payment
+      </div>
+      <div class="step-pill" id="sp3">
+        <div class="step-num"><span class="step-num-inner">3</span></div>
+        Review &amp; Confirm
+      </div>
+    </div>
+
+    <!-- ---- STEP 1: PERSONAL DETAILS ---- -->
+    <!-- GTM: Listen to 'checkout_step_1_complete' event OR Form Submit on #formStep1 -->
+    <div id="stepSection1">
+      <div class="checkout-layout">
+        <div class="checkout-card">
+          <h3>Personal <em>Details</em></h3>
+          <p>Please enter your shipping information below.</p>
+
+          <form id="formStep1" name="checkout_personal_details" data-gtm-form="checkout_step1" onsubmit="submitStep1(event)" novalidate>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="s1_fname">First Name *</label>
+                <input class="form-input" type="text" id="s1_fname" name="first_name" placeholder="Jean" autocomplete="given-name" required/>
+                <div class="form-error" id="e_fname">Required field.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="s1_lname">Last Name *</label>
+                <input class="form-input" type="text" id="s1_lname" name="last_name" placeholder="Dupont" autocomplete="family-name" required/>
+                <div class="form-error" id="e_lname">Required field.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="s1_email">Email Address *</label>
+              <input class="form-input" type="email" id="s1_email" name="email" placeholder="jean.dupont@example.com" autocomplete="email" required/>
+              <div class="form-error" id="e_email">Please enter a valid email.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="s1_phone">Phone Number *</label>
+              <input class="form-input" type="tel" id="s1_phone" name="phone" placeholder="+41 22 000 0000" autocomplete="tel" required/>
+              <div class="form-error" id="e_phone">Required field.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="s1_address">Street Address *</label>
+              <input class="form-input" type="text" id="s1_address" name="address_line1" placeholder="123 Rue de Rivoli" autocomplete="street-address" required/>
+              <div class="form-error" id="e_address">Required field.</div>
+            </div>
+
+            <div class="form-row-3">
+              <div class="form-group">
+                <label class="form-label" for="s1_city">City *</label>
+                <input class="form-input" type="text" id="s1_city" name="city" placeholder="Paris" autocomplete="address-level2" required/>
+                <div class="form-error" id="e_city">Required.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="s1_state">State / Province</label>
+                <input class="form-input" type="text" id="s1_state" name="state" placeholder="Île-de-France" autocomplete="address-level1"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="s1_postcode">Postcode *</label>
+                <input class="form-input" type="text" id="s1_postcode" name="postcode" placeholder="75001" autocomplete="postal-code" required/>
+                <div class="form-error" id="e_postcode">Required.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="s1_country">Country *</label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="s1_country" name="country" autocomplete="country-name" required>
+                  <option value="">— Select your country —</option>
+                  <option>Afghanistan</option><option>Australia</option><option>Austria</option>
+                  <option>Belgium</option><option>Brazil</option><option>Canada</option>
+                  <option>China</option><option>Denmark</option><option>Egypt</option>
+                  <option>Finland</option><option>France</option><option>Germany</option>
+                  <option>Greece</option><option>Hong Kong</option><option>India</option>
+                  <option>Indonesia</option><option>Ireland</option><option>Israel</option>
+                  <option>Italy</option><option>Japan</option><option>Kuwait</option>
+                  <option>Malaysia</option><option>Mexico</option><option>Netherlands</option>
+                  <option>New Zealand</option><option>Nigeria</option><option>Norway</option>
+                  <option>Oman</option><option>Pakistan</option><option>Philippines</option>
+                  <option>Poland</option><option>Portugal</option><option>Qatar</option>
+                  <option>Russia</option><option>Saudi Arabia</option><option>Singapore</option>
+                  <option>South Africa</option><option>South Korea</option><option>Spain</option>
+                  <option>Sweden</option><option>Switzerland</option><option>Thailand</option>
+                  <option>Turkey</option><option>Ukraine</option>
+                  <option>United Arab Emirates</option>
+                  <option>United Kingdom</option>
+                  <option>United States</option>
+                  <option>Vietnam</option><option>Other</option>
+                </select>
+              </div>
+              <div class="form-error" id="e_country">Please select your country.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="s1_notes">Order Notes (optional)</label>
+              <textarea class="form-textarea" id="s1_notes" name="order_notes" placeholder="Special instructions, gift message, etc." style="min-height:80px;"></textarea>
+            </div>
+
+            <div class="step-nav">
+              <button type="button" class="btn btn-outline" onclick="goToCart()">← Back to Cart</button>
+              <button type="submit" class="btn btn-gold">Continue to Payment →</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="summary-box">
+          <h3>Your Order</h3>
+          <div id="ckSumItems1"></div>
+          <div class="sum-row"><span>Subtotal</span><span id="ck1Sub">—</span></div>
+          <div class="sum-row"><span>Tax (8%)</span><span id="ck1Tax">—</span></div>
+          <div class="sum-row"><span>Delivery</span><span style="color:var(--gold)">Complimentary</span></div>
+          <div class="sum-row total"><span>Total</span><span id="ck1Total">—</span></div>
+        </div>
+      </div>
+    </div><!-- /stepSection1 -->
+
+
+    <!-- ---- STEP 2: PAYMENT ---- -->
+    <!-- GTM: Listen to 'checkout_step_2_complete' event OR Form Submit on #formStep2 -->
+    <div id="stepSection2" style="display:none;">
+      <div class="checkout-layout">
+        <div class="checkout-card">
+          <h3>Payment <em>Method</em></h3>
+          <p>Select your preferred method and enter your payment details.</p>
+
+          <div class="pm-grid">
+            <div class="pm-tile selected" id="pmTile_card" onclick="selectPM('card')">
+              <div class="pm-tile-icon">💳</div>
+              <div class="pm-tile-label">Credit Card</div>
+            </div>
+            <div class="pm-tile" id="pmTile_bank" onclick="selectPM('bank')">
+              <div class="pm-tile-icon">🏦</div>
+              <div class="pm-tile-label">Bank Transfer</div>
+            </div>
+            <div class="pm-tile" id="pmTile_crypto" onclick="selectPM('crypto')">
+              <div class="pm-tile-icon">₿</div>
+              <div class="pm-tile-label">Crypto</div>
+            </div>
+          </div>
+
+          <form id="formStep2" name="checkout_payment" data-gtm-form="checkout_step2" onsubmit="submitStep2(event)" novalidate>
+
+            <!-- CARD FIELDS -->
+            <div class="pm-fields active" id="pmFields_card">
+              <div class="form-group">
+                <label class="form-label" for="pm_cardname">Cardholder Name *</label>
+                <input class="form-input" type="text" id="pm_cardname" name="cardholder_name" placeholder="JEAN DUPONT" autocomplete="cc-name"/>
+                <div class="form-error" id="e_cardname">Required.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pm_cardnum">Card Number *</label>
+                <input class="form-input" type="text" id="pm_cardnum" name="card_number_masked" placeholder="•••• •••• •••• ••••" maxlength="19" autocomplete="cc-number" oninput="fmtCardNum(this)"/>
+                <div class="form-error" id="e_cardnum">Please enter a valid card number.</div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="pm_expiry">Expiry Date *</label>
+                  <input class="form-input" type="text" id="pm_expiry" name="card_expiry" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp" oninput="fmtExpiry(this)"/>
+                  <div class="form-error" id="e_expiry">Required.</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pm_cvv">CVV *</label>
+                  <input class="form-input" type="password" id="pm_cvv" name="card_cvv" placeholder="•••" maxlength="4" autocomplete="cc-csc"/>
+                  <div class="form-error" id="e_cvv">Required.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BANK TRANSFER INFO -->
+            <div class="pm-fields" id="pmFields_bank">
+              <div class="bank-info">
+                <span class="info-heading">Bank Transfer Details</span>
+                <p>
+                  Bank: Credit Suisse AG, Geneva<br/>
+                  IBAN: CH56 0483 5012 3456 7800 9<br/>
+                  BIC/SWIFT: CRESCHZZ80A<br/>
+                  Reference: Will be provided in your order confirmation email.
+                </p>
+              </div>
+            </div>
+
+            <!-- CRYPTO INFO -->
+            <div class="pm-fields" id="pmFields_crypto">
+              <div class="crypto-info">
+                <span class="info-heading">Cryptocurrency Addresses</span>
+                <p>
+                  Bitcoin (BTC): bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh<br/>
+                  Ethereum (ETH): 0x742d35Cc6634C0532925a3b8D4C9<br/>
+                  USDT / USDC: Same as ETH address<br/>
+                  Your exact wallet address will be confirmed by email.
+                </p>
+              </div>
+            </div>
+
+            <!-- Hidden field stores selected payment method for GTM -->
+            <input type="hidden" id="selectedPMInput" name="payment_method" value="card"/>
+
+            <div class="step-nav">
+              <button type="button" class="btn btn-outline" onclick="goToStep(1)">← Back</button>
+              <button type="submit" class="btn btn-gold">Review Order →</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="summary-box">
+          <h3>Your Order</h3>
+          <div id="ckSumItems2"></div>
+          <div class="sum-row"><span>Subtotal</span><span id="ck2Sub">—</span></div>
+          <div class="sum-row"><span>Tax (8%)</span><span id="ck2Tax">—</span></div>
+          <div class="sum-row"><span>Delivery</span><span style="color:var(--gold)">Complimentary</span></div>
+          <div class="sum-row total"><span>Total</span><span id="ck2Total">—</span></div>
+        </div>
+      </div>
+    </div><!-- /stepSection2 -->
+
+
+    <!-- ---- STEP 3: REVIEW & CONFIRM ---- -->
+    <!-- GTM: Listen to 'purchase' event which fires on Place Order -->
+    <div id="stepSection3" style="display:none;">
+      <div class="checkout-layout">
+        <div class="checkout-card">
+          <h3>Review &amp; <em>Confirm</em></h3>
+          <p>Please review your order details before placing.</p>
+
+          <div class="review-block" id="reviewDetails"></div>
+
+          <div class="review-notice">
+            <strong>✦ Secure &amp; Insured Purchase</strong>
+            By placing this order you agree to our Terms &amp; Conditions. Your watch will be fully insured during transit and delivered via white-glove courier with signature required.
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="btn btn-outline" onclick="goToStep(2)">← Back</button>
+            <!-- Place Order fires dataLayer purchase event then reveals success panel -->
+            <button type="button" class="btn btn-gold" id="placeOrderBtn" onclick="placeOrder()">
+              Place Order
+            </button>
+          </div>
+        </div>
+
+        <div class="summary-box">
+          <h3>Final Total</h3>
+          <div id="ckSumItems3"></div>
+          <div class="sum-row"><span>Subtotal</span><span id="ck3Sub">—</span></div>
+          <div class="sum-row"><span>Tax (8%)</span><span id="ck3Tax">—</span></div>
+          <div class="sum-row"><span>Delivery</span><span style="color:var(--gold)">Complimentary</span></div>
+          <div class="sum-row total"><span>Total</span><span id="ck3Total">—</span></div>
+        </div>
+      </div>
+    </div><!-- /stepSection3 -->
+
+  </div><!-- /panelCheckout -->
+
+
+  <!-- ============================================================
+       PANEL 3: ORDER SUCCESS
+       ============================================================ -->
+  <div class="view-panel" id="panelSuccess">
+    <div class="success-wrap">
+      <div class="success-ring">✓</div>
+      <h2>Order <em>Confirmed</em></h2>
+      <p class="s-sub">Your timepiece is being prepared with the utmost care in our Geneva atelier.</p>
+      <p class="s-sub">A confirmation has been sent to <strong id="successEmail" style="color:var(--gold);"></strong></p>
+      <div class="txn-id" id="successTxnId"></div>
+
+      <div class="order-summary-card">
+        <h4>Order Details</h4>
+        <div id="successItemsList"></div>
+        <div class="osc-row" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+          <span>Customer</span><span id="osc_name"></span>
+        </div>
+        <div class="osc-row"><span>Shipping Address</span><span id="osc_addr"></span></div>
+        <div class="osc-row"><span>Payment Method</span><span id="osc_pm"></span></div>
+        <div class="osc-row"><span>Currency</span><span>USD</span></div>
+        <div class="osc-row"><span>Est. Delivery</span><span>12–18 Business Days</span></div>
+        <div class="osc-row"><span>Subtotal</span><span id="osc_sub"></span></div>
+        <div class="osc-row"><span>Tax (8%)</span><span id="osc_tax"></span></div>
+        <div class="osc-row grand"><span>Order Total</span><span id="osc_total"></span></div>
+      </div>
+
+      <a href="watches.html" class="btn btn-gold" style="margin-bottom:14px;">Continue Shopping</a>
+      <a href="index.html" class="btn btn-outline">Return to Home</a>
+    </div>
+  </div><!-- /panelSuccess -->
+
+</div><!-- /cart-wrap -->
+</div><!-- /pt-nav -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">HOROLOGIUM</div>
+      <p class="footer-tagline">Extraordinary timepieces since 1977.</p>
+    </div>
+    <div class="footer-col"><h5>Collection</h5><ul><li><a href="watches.html">All Watches</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul>
+      <li><a href="aboutus.html">About</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Help</h5><ul>
+      <li><a href="#">Returns</a></li>
+      <li><a href="#">Authenticity</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 HOROLOGIUM SA. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script src="watches-data.js"></script>
+<script>
+/* ============================================================
+   CHECKOUT STATE
+   ============================================================ */
+var orderData = {};   // populated across steps
+var currentStep = 0; // 1,2,3
+
+/* ============================================================
+   RENDER CART VIEW
+   ============================================================ */
+function renderCartPanel() {
+  var cart = getCart();
+  var empty = document.getElementById('cartEmpty');
+  var full  = document.getElementById('cartFull');
+  if (cart.length === 0) { empty.style.display='block'; full.style.display='none'; return; }
+  empty.style.display='none'; full.style.display='block';
+
+  // Items
+  document.getElementById('cartItemsContainer').innerHTML = cart.map(function(w){
+    return '<div class="cart-item">'+
+      '<div class="cart-item-thumb" style="background:radial-gradient(ellipse at center,'+w.bg+' 0%,#030201 100%);">'+
+        generateWatchSVG(w, 58)+
+      '</div>'+
+      '<div>'+
+        '<div class="cart-item-brand">'+w.brand+' · Ref. '+w.ref+'</div>'+
+        '<div class="cart-item-name">'+w.name+'</div>'+
+        '<div class="cart-item-ref">Luxury Timepiece</div>'+
+      '</div>'+
+      '<div class="cart-item-right">'+
+        '<div class="cart-item-price">'+fmtPrice(w.price)+'</div>'+
+        '<button class="btn-remove" onclick="removeFromCart(\''+w.id+'\')">✕ Remove</button>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+
+  // Summary
+  var st = cartTotal(), tx = cartTax(), tot = cartGrandTotal();
+  document.getElementById('cartSumItems').innerHTML = cart.map(function(w){
+    return '<div class="sum-row"><span style="color:var(--text);font-size:0.88rem;">'+w.name+'</span><span>'+fmtPrice(w.price)+'</span></div>';
+  }).join('');
+  document.getElementById('csSubtotal').textContent = fmtPrice(st);
+  document.getElementById('csTax').textContent      = fmtPrice(tx);
+  document.getElementById('csTotal').textContent    = fmtPrice(tot);
+}
+
+/* ============================================================
+   PANEL NAVIGATION
+   ============================================================ */
+function showPanel(id) {
+  document.querySelectorAll('.view-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function goToCart() { showPanel('panelCart'); renderCartPanel(); }
+
+function goCheckout() {
+  if (getCart().length === 0) return;
+  showPanel('panelCheckout');
+  goToStep(1);
+  // dataLayer: begin_checkout
+  dlPush({
+    event: 'begin_checkout',
+    ecommerce: {
+      currency: 'USD',
+      value: cartGrandTotal(),
+      items: getCart().map(function(w,i){
+        return { item_id:w.id, item_name:w.name, item_brand:w.brand,
+                 item_category:w.category, price:w.price, quantity:1, index:i };
+      })
+    }
+  });
+}
+
+/* ============================================================
+   STEP MANAGEMENT
+   ============================================================ */
+function goToStep(n) {
+  currentStep = n;
+  // Steps visibility
+  ['1','2','3'].forEach(function(s){
+    document.getElementById('stepSection'+s).style.display = (+s===n ? 'block' : 'none');
+  });
+  // Step pills
+  ['1','2','3'].forEach(function(s){
+    var pill = document.getElementById('sp'+s);
+    pill.classList.remove('active','done');
+    if (+s < n)  pill.classList.add('done');
+    if (+s === n) pill.classList.add('active');
+  });
+  fillSummaryBox(n);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function fillSummaryBox(step) {
+  var cart = getCart();
+  var items = cart.map(function(w){
+    return '<div class="sum-row"><span style="color:var(--text);font-size:0.85rem;">'+w.name+'</span><span>'+fmtPrice(w.price)+'</span></div>';
+  }).join('');
+  var st = cartTotal(), tx = cartTax(), tot = cartGrandTotal();
+  function setBox(n) {
+    var el = document.getElementById('ckSumItems'+n);
+    if(el) el.innerHTML = items;
+    setTxt('ck'+n+'Sub',   fmtPrice(st));
+    setTxt('ck'+n+'Tax',   fmtPrice(tx));
+    setTxt('ck'+n+'Total', fmtPrice(tot));
+  }
+  setBox(step);
+}
+function setTxt(id, val) { var el=document.getElementById(id); if(el) el.textContent=val; }
+
+/* ============================================================
+   STEP 1 SUBMIT — Personal Details
+   GTM: event 'checkout_step_1_complete'
+        Also: GTM Form Submit trigger on form id="formStep1"
+   ============================================================ */
+function submitStep1(e) {
+  e.preventDefault();
+  var ok = true;
+  function req(id, errId) {
+    var el = document.getElementById(id);
+    var err = document.getElementById(errId);
+    if (!el || !el.value.trim()) { if(err) err.classList.add('show'); ok=false; }
+    else { if(err) err.classList.remove('show'); }
+  }
+  function reqEmail(id, errId) {
+    var el = document.getElementById(id);
+    var err = document.getElementById(errId);
+    if (!el.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
+      err.classList.add('show'); ok=false;
+    } else { err.classList.remove('show'); }
+  }
+  req('s1_fname','e_fname');
+  req('s1_lname','e_lname');
+  reqEmail('s1_email','e_email');
+  req('s1_phone','e_phone');
+  req('s1_address','e_address');
+  req('s1_city','e_city');
+  req('s1_postcode','e_postcode');
+  req('s1_country','e_country');
+  if (!ok) { showToast('Please complete all required fields.'); return; }
+
+  // Save to orderData
+  orderData.firstName  = document.getElementById('s1_fname').value.trim();
+  orderData.lastName   = document.getElementById('s1_lname').value.trim();
+  orderData.email      = document.getElementById('s1_email').value.trim();
+  orderData.phone      = document.getElementById('s1_phone').value.trim();
+  orderData.address    = document.getElementById('s1_address').value.trim();
+  orderData.city       = document.getElementById('s1_city').value.trim();
+  orderData.state      = document.getElementById('s1_state').value.trim();
+  orderData.postcode   = document.getElementById('s1_postcode').value.trim();
+  orderData.country    = document.getElementById('s1_country').value;
+  orderData.notes      = document.getElementById('s1_notes').value.trim();
+
+  /* ---- DATALAYER: checkout_step_1_complete / add_shipping_info ---- */
+  dlPush({
+    event: 'checkout_step_1_complete',
+    checkout_step: 1,
+    checkout_step_name: 'Personal Details',
+    customer_country: orderData.country,
+    customer_city: orderData.city
+  });
+  dlPush({
+    event: 'add_shipping_info',
+    ecommerce: {
+      currency: 'USD',
+      value: cartGrandTotal(),
+      shipping_tier: 'White Glove Complimentary',
+      items: getCart().map(function(w,i){
+        return { item_id:w.id, item_name:w.name, item_brand:w.brand,
+                 item_category:w.category, price:w.price, quantity:1, index:i };
+      })
+    }
+  });
+
+  goToStep(2);
+}
+
+/* ============================================================
+   PAYMENT METHOD SELECTION
+   ============================================================ */
+function selectPM(type) {
+  ['card','bank','crypto'].forEach(function(t){
+    document.getElementById('pmTile_'+t).classList.toggle('selected', t===type);
+    document.getElementById('pmFields_'+t).classList.toggle('active', t===type);
+  });
+  document.getElementById('selectedPMInput').value = type;
+  orderData.paymentType = type;
+}
+
+/* ============================================================
+   STEP 2 SUBMIT — Payment
+   GTM: event 'checkout_step_2_complete'
+        Also: GTM Form Submit trigger on form id="formStep2"
+   ============================================================ */
+function submitStep2(e) {
+  e.preventDefault();
+  var pmType = document.getElementById('selectedPMInput').value;
+  orderData.paymentType = pmType;
+
+  if (pmType === 'card') {
+    var ok = true;
+    function req2(id,errId){
+      var el=document.getElementById(id);
+      var err=document.getElementById(errId);
+      if(!el||!el.value.trim()){if(err)err.classList.add('show');ok=false;}
+      else{if(err)err.classList.remove('show');}
+    }
+    req2('pm_cardname','e_cardname');
+    var num = document.getElementById('pm_cardnum').value.replace(/\s/g,'');
+    if (num.length < 13) { document.getElementById('e_cardnum').classList.add('show'); ok=false; }
+    else { document.getElementById('e_cardnum').classList.remove('show'); }
+    req2('pm_expiry','e_expiry');
+    req2('pm_cvv','e_cvv');
+    if (!ok) { showToast('Please complete your card details.'); return; }
+    orderData.paymentLabel = 'Credit Card (ending ···· '+num.slice(-4)+')';
+  } else if (pmType === 'bank') {
+    orderData.paymentLabel = 'Bank Transfer';
+  } else {
+    orderData.paymentLabel = 'Cryptocurrency';
+  }
+
+  /* ---- DATALAYER: checkout_step_2_complete / add_payment_info ---- */
+  dlPush({
+    event: 'checkout_step_2_complete',
+    checkout_step: 2,
+    checkout_step_name: 'Payment Method',
+    payment_type: orderData.paymentLabel
+  });
+  dlPush({
+    event: 'add_payment_info',
+    ecommerce: {
+      currency: 'USD',
+      value: cartGrandTotal(),
+      payment_type: orderData.paymentLabel,
+      items: getCart().map(function(w,i){
+        return { item_id:w.id, item_name:w.name, item_brand:w.brand,
+                 item_category:w.category, price:w.price, quantity:1, index:i };
+      })
+    }
+  });
+
+  buildReview();
+  goToStep(3);
+}
+
+/* ============================================================
+   BUILD REVIEW SECTION
+   ============================================================ */
+function buildReview() {
+  var html =
+    '<div class="review-row"><span>Name</span><span>'+orderData.firstName+' '+orderData.lastName+'</span></div>'+
+    '<div class="review-row"><span>Email</span><span>'+orderData.email+'</span></div>'+
+    '<div class="review-row"><span>Phone</span><span>'+orderData.phone+'</span></div>'+
+    '<div class="review-row"><span>Shipping Address</span><span>'+orderData.address+', '+orderData.city+(orderData.state?' '+orderData.state:'')+', '+orderData.postcode+', '+orderData.country+'</span></div>'+
+    '<div class="review-row"><span>Payment Method</span><span>'+orderData.paymentLabel+'</span></div>'+
+    (orderData.notes ? '<div class="review-row"><span>Notes</span><span>'+orderData.notes+'</span></div>' : '')+
+    '<div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--border);">'+
+      getCart().map(function(w){
+        return '<div class="review-row"><span>'+w.name+'</span><span>'+fmtPrice(w.price)+'</span></div>';
+      }).join('')+
+    '</div>';
+  document.getElementById('reviewDetails').innerHTML = html;
+  fillSummaryBox(3);
+}
+
+/* ============================================================
+   PLACE ORDER
+   GTM: event 'purchase' — all required ecommerce fields included
+   ============================================================ */
+function placeOrder() {
+  var cart = getCart();
+  if (cart.length === 0) return;
+
+  var txnId     = 'HRG-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substr(2,6).toUpperCase();
+  var subtotal  = cartTotal();
+  var tax       = cartTax();
+  var total     = cartGrandTotal();
+  var currency  = 'USD';
+
+  /* ================================================================
+     DATALAYER PURCHASE EVENT
+     — Complete GA4 ecommerce purchase schema
+     — All fields accessible as GTM variables for Universal Analytics,
+       GA4, Google Ads, Meta CAPI, etc.
+     ================================================================ */
+  dlPush({
+    event: 'purchase',
+
+    // Top-level transaction fields (GA4 + UA compatible)
+    transaction_id:   txnId,
+    currency:         currency,
+    value:            total,
+    subtotal:         subtotal,
+    tax:              tax,
+    shipping:         0,
+    coupon:           null,
+    affiliation:      'HOROLOGIUM Online Store',
+
+    // Shipping info
+    shipping_tier:    'White Glove Complimentary',
+
+    // Payment info
+    payment_type:     orderData.paymentLabel,
+
+    // Customer info (for CRM / offline conversion import)
+    customer: {
+      first_name:  orderData.firstName,
+      last_name:   orderData.lastName,
+      email:       orderData.email,
+      phone:       orderData.phone,
+      city:        orderData.city,
+      state:       orderData.state || '',
+      postcode:    orderData.postcode,
+      country:     orderData.country
+    },
+
+    // GA4 ecommerce object
+    ecommerce: {
+      transaction_id: txnId,
+      currency:       currency,
+      value:          total,
+      tax:            tax,
+      shipping:       0,
+      coupon:         null,
+      affiliation:    'HOROLOGIUM Online Store',
+      payment_type:   orderData.paymentLabel,
+      shipping_tier:  'White Glove Complimentary',
+      items: cart.map(function(w, i) {
+        return {
+          item_id:        w.id,
+          item_name:      w.name,
+          item_brand:     w.brand,
+          item_category:  w.category,
+          item_variant:   w.ref,
+          affiliation:    'HOROLOGIUM Online Store',
+          currency:       currency,
+          price:          w.price,
+          quantity:       1,
+          index:          i
+        };
+      })
+    }
+  });
+
+  /* ---- POPULATE SUCCESS SCREEN ---- */
+  document.getElementById('successEmail').textContent = orderData.email;
+  document.getElementById('successTxnId').textContent = 'Transaction ID: ' + txnId;
+  document.getElementById('successItemsList').innerHTML = cart.map(function(w){
+    return '<div class="osc-row"><span>'+w.name+'</span><span>'+fmtPrice(w.price)+'</span></div>';
+  }).join('');
+  document.getElementById('osc_name').textContent  = orderData.firstName+' '+orderData.lastName;
+  document.getElementById('osc_addr').textContent  = orderData.city+', '+orderData.country;
+  document.getElementById('osc_pm').textContent    = orderData.paymentLabel;
+  document.getElementById('osc_sub').textContent   = fmtPrice(subtotal);
+  document.getElementById('osc_tax').textContent   = fmtPrice(tax);
+  document.getElementById('osc_total').textContent = fmtPrice(total);
+
+  /* ---- CLEAR CART ---- */
+  localStorage.removeItem('hrg_cart');
+  updateCartBadgeAll();
+
+  showPanel('panelSuccess');
+}
+
+/* ============================================================
+   CARD NUMBER & EXPIRY FORMATTERS
+   ============================================================ */
+function fmtCardNum(el) {
+  var v = el.value.replace(/\D/g,'').slice(0,16);
+  el.value = v.replace(/(.{4})/g,'$1 ').trim();
+}
+function fmtExpiry(el) {
+  var v = el.value.replace(/\D/g,'').slice(0,4);
+  if (v.length >= 3) v = v.slice(0,2) + ' / ' + v.slice(2);
+  el.value = v;
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderCartPanel();
+trackPageView('Cart', '/cart.html');
+</script>
+</body>
+</html>
