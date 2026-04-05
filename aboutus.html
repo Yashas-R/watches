@@ -17,151 +17,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5T9J9LD3');</script>
 <!-- End Google Tag Manager -->
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us — HOROLOGIUM Fine Timepieces</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-  <style>
-    /* ---- ABOUT SPECIFIC ---- */
-    .about-intro {
-      display: grid; grid-template-columns: 1fr 1fr;
-      min-height: 80vh; align-items: center;
-      border-bottom: 1px solid var(--border);
-    }
-    .about-intro-text { padding: 80px 52px; }
-    .about-intro-text .eyebrow { margin-bottom: 20px; }
-    .about-intro-text h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      font-weight: 700; color: var(--cream); line-height: 1.1; margin-bottom: 28px;
-    }
-    .about-intro-text h1 em { font-style: italic; color: var(--gold); }
-    .about-intro-text p { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.9; margin-bottom: 18px; }
-    .about-intro-visual {
-      position: relative; height: 80vh;
-      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
-      display: flex; align-items: center; justify-content: center;
-      border-left: 1px solid var(--border);
-      overflow: hidden;
-    }
-    .clock-rings { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-    .clock-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(201,168,76,0.08);
-    }
-    .cr1 { width: 540px; height: 540px; animation: rotRing 50s linear infinite; }
-    .cr2 { width: 380px; height: 380px; animation: rotRing 35s linear infinite reverse; }
-    .cr3 { width: 240px; height: 240px; animation: rotRing 22s linear infinite; }
-    @keyframes rotRing { to { transform: rotate(360deg); } }
-    .clock-svg-wrap { position: relative; z-index: 2; animation: softFloat 8s ease-in-out infinite; }
-    @keyframes softFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-
-    /* Timeline */
-    .timeline-section { padding: 96px 52px; border-bottom: 1px solid var(--border); }
-    .timeline { position: relative; margin-top: 56px; padding-left: 52px; }
-    .timeline::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 1px; background: linear-gradient(180deg, var(--gold-dim) 0%, transparent 100%);
-    }
-    .tl-item { position: relative; margin-bottom: 52px; }
-    .tl-item::before {
-      content: '';
-      position: absolute; left: -56px; top: 6px;
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
-      background: var(--bg);
-    }
-    .tl-year {
-      font-family: var(--font-display); font-size: 1.6rem; font-weight: 700;
-      color: var(--gold); margin-bottom: 6px; line-height: 1;
-    }
-    .tl-title {
-      font-family: var(--font-display); font-size: 1.1rem; color: var(--cream); margin-bottom: 8px;
-    }
-    .tl-desc { font-size: 0.95rem; color: var(--muted); font-weight: 300; line-height: 1.8; max-width: 560px; }
-
-    /* Values */
-    .values-section {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .value-block {
-      padding: 56px 48px;
-      border-right: 1px solid var(--border);
-      transition: background var(--transition);
-    }
-    .value-block:last-child { border-right: none; }
-    .value-block:hover { background: var(--surface); }
-    .value-num {
-      font-family: var(--font-display); font-size: 3.5rem; font-weight: 700;
-      color: rgba(201,168,76,0.1); line-height: 1; margin-bottom: 18px;
-    }
-    .value-title {
-      font-family: var(--font-display); font-size: 1.3rem; color: var(--cream); margin-bottom: 12px;
-    }
-    .value-desc { font-size: 0.92rem; color: var(--muted); font-weight: 300; line-height: 1.8; }
-
-    /* Team */
-    .team-section { padding: 96px 52px; }
-    .team-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 2px; margin-top: 56px;
-    }
-    .team-card {
-      background: var(--card); border: 1px solid var(--border);
-      padding: 44px 36px; text-align: center;
-      transition: border-color var(--transition);
-    }
-    .team-card:hover { border-color: var(--border-gold); }
-    .team-avatar {
-      width: 88px; height: 88px; border-radius: 50%;
-      border: 1px solid var(--gold-dim);
-      background: var(--surface);
-      margin: 0 auto 20px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-size: 2rem; color: var(--gold);
-    }
-    .team-name { font-family: var(--font-display); font-size: 1.15rem; color: var(--cream); margin-bottom: 4px; }
-    .team-role {
-      font-family: var(--font-ui); font-size: 0.58rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 14px;
-    }
-    .team-bio { font-size: 0.88rem; color: var(--muted); font-weight: 300; line-height: 1.75; }
-
-    /* CTA banner */
-    .about-cta {
-      padding: 80px 52px; text-align: center;
-      background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
-      border-top: 1px solid var(--border);
-    }
-    .about-cta h2 {
-      font-family: var(--font-display); font-size: clamp(2rem,3.5vw,2.8rem);
-      color: var(--cream); margin-bottom: 16px;
-    }
-    .about-cta h2 em { font-style:italic; color:var(--gold); }
-    .about-cta p { font-size: 1rem; color: var(--muted); font-weight: 300; margin-bottom: 36px; }
-    .about-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-    @media(max-width:1024px){
-      .about-intro { grid-template-columns: 1fr; }
-      .about-intro-visual { display: none; }
-      .about-intro-text { padding: 60px 32px; }
-      .values-section { grid-template-columns: 1fr; }
-      .value-block { border-right: none; border-bottom: 1px solid var(--border); }
-      .team-grid { grid-template-columns: 1fr 1fr; }
-      .timeline-section { padding: 64px 32px; }
-      .team-section { padding: 64px 32px; }
-      .about-cta { padding: 60px 32px; }
-    }
-    @media(max-width:768px){
-      .team-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us — HOROLOGIUM Fine Timepieces</title>
+<link rel="stylesheet" href="style.css"/>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<style>
+.about-intro{display:grid;grid-template-columns:1fr 1fr;min-height:80vh;align-items:center;border-bottom:1px solid var(--border)}
+.about-text{padding:80px 52px}
+.about-text .eyebrow{margin-bottom:20px}
+.about-text h1{font-family:var(--fd);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:700;color:var(--cream);line-height:1.1;margin-bottom:24px}
+.about-text h1 em{font-style:italic;color:var(--gold)}
+.about-text p{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.9;margin-bottom:16px}
+.about-visual{position:relative;height:80vh;border-left:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(201,168,76,.05) 0%,transparent 70%)}
+.cr{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.08)}
+.cr1{width:500px;height:500px;animation:cr 48s linear infinite}
+.cr2{width:360px;height:360px;animation:cr 32s linear infinite reverse}
+.cr3{width:220px;height:220px;animation:cr 20s linear infinite}
+@keyframes cr{to{transform:rotate(360deg)}}
+.clk-wrap{position:relative;z-index:2;animation:sf 8s ease-in-out infinite}
+@keyframes sf{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.values{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.val-block{padding:52px 44px;border-right:1px solid var(--border);transition:background .25s}
+.val-block:last-child{border-right:none}
+.val-block:hover{background:var(--surface)}
+.val-num{font-family:var(--fd);font-size:3.2rem;font-weight:700;color:rgba(201,168,76,.12);line-height:1;margin-bottom:16px}
+.val-title{font-family:var(--fd);font-size:1.25rem;color:var(--cream);margin-bottom:10px}
+.val-desc{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.8}
+.tl-section{padding:80px 52px;border-bottom:1px solid var(--border)}
+.timeline{position:relative;margin-top:52px;padding-left:48px}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--gold-d) 0%,transparent 100%)}
+.tl-item{position:relative;margin-bottom:48px}
+.tl-item::before{content:'';position:absolute;left:-52px;top:6px;width:9px;height:9px;border-radius:50%;border:1px solid var(--gold);background:var(--bg)}
+.tl-year{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--gold);margin-bottom:5px;line-height:1}
+.tl-title{font-family:var(--fd);font-size:1.05rem;color:var(--cream);margin-bottom:7px}
+.tl-desc{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.8;max-width:540px}
+.team-section{padding:80px 52px}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px}
+.team-card{background:var(--card);border:1px solid var(--border);padding:40px 32px;text-align:center;transition:border-color .25s}
+.team-card:hover{border-color:var(--borderl)}
+.team-av{width:84px;height:84px;border-radius:50%;border:1px solid var(--gold-d);background:var(--surface);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.8rem;color:var(--gold)}
+.team-name{font-family:var(--fd);font-size:1.1rem;color:var(--cream);margin-bottom:4px}
+.team-role{font-family:var(--fu);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.team-bio{font-size:.86rem;color:var(--muted);font-weight:300;line-height:1.75}
+.about-cta{padding:80px 52px;text-align:center;background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%);border-top:1px solid var(--border)}
+.about-cta h2{font-family:var(--fd);font-size:clamp(1.8rem,3vw,2.6rem);color:var(--cream);margin-bottom:14px}
+.about-cta h2 em{font-style:italic;color:var(--gold)}
+.about-cta p{font-size:1rem;color:var(--muted);font-weight:300;margin-bottom:32px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+@media(max-width:1024px){.about-intro{grid-template-columns:1fr}.about-visual{display:none}.about-text{padding:60px 28px}.values{grid-template-columns:1fr}.val-block{border-right:none;border-bottom:1px solid var(--border)}.team-grid{grid-template-columns:1fr 1fr}.tl-section,.team-section,.about-cta{padding:60px 28px}}
+@media(max-width:768px){.team-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -169,211 +75,102 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<div id="toast-global"><span class="toast-icon">✦</span><span class="toast-msg"></span></div>
-
-<!-- NAV -->
+<div id="toast-global"><span>✦</span><span class="toast-msg"></span></div>
 <nav class="nav">
   <a href="index.html" class="nav-logo">HOROLOGIUM</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="watches.html">Collection</a></li>
-    <li><a href="aboutus.html" class="active">About</a></li>
-    <li><a href="contactus.html">Contact</a></li>
+    <li><a href="index.html">Home</a></li><li><a href="watches.html">Collection</a></li>
+    <li><a href="aboutus.html" class="active">About</a></li><li><a href="contactus.html">Contact</a></li>
   </ul>
-  <div class="nav-right">
-    <a href="cart.html" class="nav-cart-btn btn">Cart <span class="cart-count">0</span></a>
-  </div>
+  <div class="nav-right"><a href="cart.html" class="nav-cart-btn">Cart <span class="cart-count">0</span></a></div>
 </nav>
-
-<!-- INTRO -->
 <div class="pt-nav">
   <div class="about-intro">
-    <div class="about-intro-text">
+    <div class="about-text">
       <div class="eyebrow">Our Story · Est. Geneva 1977</div>
-      <h1>Crafting <em>eternity</em>,<br/>one timepiece<br/>at a time.</h1>
+      <h1>Crafting <em>eternity</em>,<br/>one timepiece at a time.</h1>
       <p>Founded in Geneva in 1977 by master watchmaker Henri Leclerc, Horologium was born from a singular obsession: to create watches that transcend utility and become heirlooms for future generations.</p>
-      <p>Every watch in our atelier passes through the hands of at least twelve specialists before it reaches a collector. We spend an average of 340 hours on each piece — not because we must, but because we believe excellence demands nothing less.</p>
-      <p>Today, Horologium watches reside in private collections across 18 countries, worn by those who understand that true luxury is measured not in price, but in the depth of craft behind each tick.</p>
-      <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;">
+      <p>Every watch in our atelier passes through the hands of at least twelve specialists before reaching a collector. We spend an average of 340 hours on each piece — not because we must, but because excellence demands nothing less.</p>
+      <p>Today, Horologium watches reside in private collections across 18 countries, worn by those who understand that true luxury is measured in the depth of craft behind each tick.</p>
+      <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;">
         <a href="watches.html" class="btn btn-gold">View Collection</a>
         <a href="contactus.html" class="btn btn-outline">Get in Touch</a>
       </div>
     </div>
-    <div class="about-intro-visual">
-      <div class="clock-rings">
-        <div class="clock-ring cr1"></div>
-        <div class="clock-ring cr2"></div>
-        <div class="clock-ring cr3"></div>
-      </div>
-      <div class="clock-svg-wrap" id="aboutClock"></div>
+    <div class="about-visual">
+      <div class="cr cr1"></div><div class="cr cr2"></div><div class="cr cr3"></div>
+      <div class="clk-wrap" id="aboutClock"></div>
     </div>
   </div>
+  <div class="values">
+    <div class="val-block"><div class="val-num">01</div><div class="val-title">Swiss Mastery</div><div class="val-desc">Every movement Swiss-made and COSC-certified to ±2 seconds per day across all conditions.</div></div>
+    <div class="val-block"><div class="val-num">02</div><div class="val-title">Hand Finishing</div><div class="val-desc">Cotes de Geneve striping, beveled anglage — every component receives individual attention from master finishers.</div></div>
+    <div class="val-block"><div class="val-num">03</div><div class="val-title">Lifelong Service</div><div class="val-desc">We service every watch we have ever made and maintain spare components for all historical references in perpetuity.</div></div>
+  </div>
+  <section class="tl-section">
+    <div class="eyebrow">Our Journey</div>
+    <h2 class="display-title" style="font-size:clamp(1.8rem,3vw,2.4rem);margin-top:10px;">Four decades of <em>excellence</em></h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-year">1977</div><div class="tl-title">Founded in Geneva</div><div class="tl-desc">Henri Leclerc establishes Horologium SA on Rue du Rhone with four watchmakers and a vision to challenge established maisons.</div></div>
+      <div class="tl-item"><div class="tl-year">1983</div><div class="tl-title">First In-House Calibre</div><div class="tl-desc">Cal. H-001 unveiled — hand-wound movement with 52-hour power reserve. Wins Grand Prix d'Horlogerie de Geneve.</div></div>
+      <div class="tl-item"><div class="tl-year">1992</div><div class="tl-title">Perpetuel Classique Launched</div><div class="tl-desc">Our perpetual calendar complication debuts, recognised as one of the finest of its generation.</div></div>
+      <div class="tl-item"><div class="tl-year">2001</div><div class="tl-title">Expansion to Asia &amp; Middle East</div><div class="tl-desc">First boutiques open in Tokyo and Dubai, bringing the Geneva atelier experience to collectors worldwide.</div></div>
+      <div class="tl-item"><div class="tl-year">2012</div><div class="tl-title">Heritage Tourbillon Debuts</div><div class="tl-desc">Flying tourbillon at 6 o'clock with 78-hour power reserve — cementing Horologium among the great complication makers.</div></div>
+      <div class="tl-item"><div class="tl-year">2020</div><div class="tl-title">Cosmos Orrery — 12 Pieces Only</div><div class="tl-desc">Miniature solar system on the wrist. The most complex watch Horologium has ever produced. All 12 placed within weeks.</div></div>
+      <div class="tl-item"><div class="tl-year">2025</div><div class="tl-title">India Flagship Launch</div><div class="tl-desc">We bring the full Horologium experience to Indian collectors with white-glove delivery and lifetime service across India.</div></div>
+    </div>
+  </section>
+  <section class="team-section">
+    <div class="eyebrow">The People Behind the Craft</div>
+    <h2 class="display-title" style="font-size:clamp(1.8rem,3vw,2.4rem);margin-top:10px;">Our <em>Masters</em></h2>
+    <div class="team-grid">
+      <div class="team-card"><div class="team-av">H</div><div class="team-name">Henri Leclerc</div><div class="team-role">Founder &amp; Master Watchmaker</div><div class="team-bio">50 years in haute horlogerie. His pursuit of perfection has shaped every principle Horologium stands for.</div></div>
+      <div class="team-card"><div class="team-av">I</div><div class="team-name">Isabelle Moreau</div><div class="team-role">Head of Dial Artistry</div><div class="team-bio">Trained in enamel workshops of Le Locle. Each of her grand feu enamel pieces requires three weeks of work.</div></div>
+      <div class="team-card"><div class="team-av">R</div><div class="team-name">Romain Dupuis</div><div class="team-role">Chief Movement Engineer</div><div class="team-bio">WOSTEP graduate with two escapement patents. Leads a team of 12 engineers pushing mechanical accuracy.</div></div>
+      <div class="team-card"><div class="team-av">S</div><div class="team-name">Sophie Aubert</div><div class="team-role">Head of Case Design</div><div class="team-bio">Industrial design from Milan. Her sculptural approach gives each Horologium case a distinctive architectural presence.</div></div>
+      <div class="team-card"><div class="team-av">M</div><div class="team-name">Marc Tissot</div><div class="team-role">Master Angleur &amp; Finisher</div><div class="team-bio">28 years perfecting anglage. He hand-bevels and polishes more than 40 individual components per watch.</div></div>
+      <div class="team-card"><div class="team-av">A</div><div class="team-name">Amara Osei</div><div class="team-role">Director of Client Relations</div><div class="team-bio">Ensures every Horologium collector receives a relationship that lasts a lifetime. Oversees white-glove commissions.</div></div>
+    </div>
+  </section>
+  <section class="about-cta">
+    <h2>Ready to find your <em>timepiece</em>?</h2>
+    <p>Browse our full collection of 20 extraordinary watches, or speak with one of our specialists.</p>
+    <div class="cta-btns">
+      <a href="watches.html" class="btn btn-gold">Explore Collection</a>
+      <a href="contactus.html" class="btn btn-outline">Speak to a Specialist</a>
+    </div>
+  </section>
 </div>
-
-<!-- VALUES -->
-<div class="values-section">
-  <div class="value-block">
-    <div class="value-num">01</div>
-    <div class="value-title">Swiss Mastery</div>
-    <div class="value-desc">Every movement is Swiss-made and certified by the Official Swiss Chronometer Testing Institute. Our movements achieve an accuracy of +/− 2 seconds per day across all conditions.</div>
-  </div>
-  <div class="value-block">
-    <div class="value-num">02</div>
-    <div class="value-title">Hand Finishing</div>
-    <div class="value-desc">From Côtes de Genève striping to beveled anglage, every component receives individual attention from master finishers who have dedicated their lives to the art of surface decoration.</div>
-  </div>
-  <div class="value-block">
-    <div class="value-num">03</div>
-    <div class="value-title">Lifelong Service</div>
-    <div class="value-desc">A Horologium watch is a lifelong relationship. We service every watch we have ever made and maintain spare components for all historical references in perpetuity.</div>
-  </div>
-</div>
-
-<!-- TIMELINE -->
-<section class="timeline-section">
-  <div class="eyebrow">Our Journey</div>
-  <h2 class="display-title" style="font-size:clamp(1.8rem,3vw,2.5rem);margin-top:12px;">
-    Four decades of <em>excellence</em>
-  </h2>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-year">1977</div>
-      <div class="tl-title">Founded in Geneva</div>
-      <div class="tl-desc">Henri Leclerc establishes Horologium SA on Rue du Rhône, Geneva, with a team of four watchmakers and a vision to challenge established maisons.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-year">1983</div>
-      <div class="tl-title">First In-House Calibre</div>
-      <div class="tl-desc">The Cal. H-001 is unveiled — a hand-wound movement with 52-hour power reserve. It wins the Grand Prix d'Horlogerie de Genève.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-year">1992</div>
-      <div class="tl-title">Perpetuel Classique Launched</div>
-      <div class="tl-desc">Our perpetual calendar complication debuts and becomes a cornerstone of the collection, recognised as one of the finest of its generation.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-year">2001</div>
-      <div class="tl-title">Expansion to Tokyo &amp; Dubai</div>
-      <div class="tl-desc">Horologium opens its first boutiques outside Switzerland, bringing the Geneva atelier experience to collectors in Asia and the Middle East.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-year">2012</div>
-      <div class="tl-title">The Tourbillon Milestone</div>
-      <div class="tl-desc">The Héritage Tourbillon debuts with a flying tourbillon at 6 o'clock and a 78-hour power reserve, cementing Horologium among the great complication makers.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-year">2020</div>
-      <div class="tl-title">Cosmos Orrery — 12 Pieces</div>
-      <div class="tl-desc">The most complex watch Horologium has ever produced: a miniature solar system on the wrist. All 12 pieces are placed with private collectors in weeks.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-year">2025</div>
-      <div class="tl-title">Online Flagship Launch</div>
-      <div class="tl-desc">We bring the full Horologium experience to the world with our online flagship, offering every timepiece with white-glove delivery and lifetime service.</div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section class="team-section" id="team">
-  <div class="eyebrow">The People Behind the Craft</div>
-  <h2 class="display-title" style="font-size:clamp(1.8rem,3vw,2.5rem);margin-top:12px;">
-    Our <em>Masters</em>
-  </h2>
-  <div class="team-grid">
-    <div class="team-card">
-      <div class="team-avatar">H</div>
-      <div class="team-name">Henri Leclerc</div>
-      <div class="team-role">Founder &amp; Master Watchmaker</div>
-      <div class="team-bio">With 50 years in haute horlogerie, Henri's pursuit of perfection has shaped every principle Horologium stands for. His hands have touched every calibre we have ever released.</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">I</div>
-      <div class="team-name">Isabelle Moreau</div>
-      <div class="team-role">Head of Dial Artistry</div>
-      <div class="team-bio">Trained in the enamel workshops of Le Locle, Isabelle brings a painterly sensibility to our dials. Each of her grand feu enamel pieces requires three weeks of dedicated work.</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">R</div>
-      <div class="team-name">Romain Dupuis</div>
-      <div class="team-role">Chief Movement Engineer</div>
-      <div class="team-bio">A graduate of WOSTEP with two patents in escapement design, Romain leads a team of 12 engineers continuously pushing the boundaries of mechanical accuracy.</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">S</div>
-      <div class="team-name">Sophie Aubert</div>
-      <div class="team-role">Head of Case Design</div>
-      <div class="team-bio">Sophie studied industrial design in Milan before joining Horologium. Her sculptural approach to case geometry gives each watch a distinctive architectural presence.</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">M</div>
-      <div class="team-name">Marc Tissot</div>
-      <div class="team-role">Master Angleur &amp; Finisher</div>
-      <div class="team-bio">Marc has spent 28 years perfecting the art of anglage — the hand-beveling of movement components. He polishes more than 40 individual parts per watch.</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">A</div>
-      <div class="team-name">Amara Osei</div>
-      <div class="team-role">Director of Client Relations</div>
-      <div class="team-bio">Amara ensures every Horologium collector receives a relationship that lasts a lifetime. She personally oversees white-glove delivery for our most significant commissions.</div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="about-cta">
-  <h2>Ready to find your <em>timepiece</em>?</h2>
-  <p>Browse our full collection of 20 extraordinary watches, or speak with one of our horological specialists.</p>
-  <div class="about-cta-btns">
-    <a href="watches.html" class="btn btn-gold">Explore Collection</a>
-    <a href="contactus.html" class="btn btn-outline">Speak to a Specialist</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
-    <div>
-      <div class="footer-logo">HOROLOGIUM</div>
-      <p class="footer-tagline">Extraordinary timepieces since 1977. Geneva, Switzerland.</p>
-    </div>
+    <div><div class="footer-logo">HOROLOGIUM</div><p class="footer-tagline">Extraordinary timepieces since 1977.</p></div>
     <div class="footer-col"><h5>Collection</h5><ul><li><a href="watches.html">All Watches</a></li></ul></div>
-    <div class="footer-col"><h5>Company</h5><ul>
-      <li><a href="aboutus.html">About</a></li>
-      <li><a href="contactus.html">Contact</a></li>
-    </ul></div>
-    <div class="footer-col"><h5>Services</h5><ul>
-      <li><a href="#">Servicing</a></li>
-      <li><a href="#">Bespoke</a></li>
-    </ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="aboutus.html">About</a></li><li><a href="contactus.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Services</h5><ul><li><a href="#">Servicing</a></li><li><a href="#">Bespoke</a></li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 HOROLOGIUM SA. All Rights Reserved.</p>
-  </div>
+  <div class="footer-bottom"><p>© 2025 HOROLOGIUM SA. All Rights Reserved.</p></div>
 </footer>
-
 <script src="watches-data.js"></script>
 <script>
-  document.getElementById('aboutClock').innerHTML = (function(){
-    var a = '#c9a84c';
-    return '<svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" width="260" height="260">'+
-      '<circle cx="130" cy="130" r="122" fill="#0a0806" stroke="'+a+'" stroke-width="1.5"/>'+
-      '<circle cx="130" cy="130" r="100" fill="none" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>'+
-      '<text x="130" y="96" text-anchor="middle" fill="'+a+'" font-size="9.5" font-family="Playfair Display,serif" letter-spacing="3.5">HOROLOGIUM</text>'+
-      '<text x="130" y="110" text-anchor="middle" fill="rgba(201,168,76,0.5)" font-size="6" font-family="Montserrat,sans-serif" letter-spacing="3">GENÈVE · EST. 1977</text>'+
-      '<rect x="128" y="14" width="4" height="18" rx="1" fill="'+a+'"/>'+
-      '<rect x="128" y="228" width="4" height="18" rx="1" fill="'+a+'"/>'+
-      '<rect x="14" y="128" width="18" height="4" rx="1" fill="'+a+'"/>'+
-      '<rect x="228" y="128" width="18" height="4" rx="1" fill="'+a+'"/>'+
-      '<line x1="130" y1="130" x2="130" y2="54" stroke="'+a+'" stroke-width="4" stroke-linecap="round"/>'+
-      '<line x1="130" y1="130" x2="192" y2="112" stroke="'+a+'" stroke-width="3" stroke-linecap="round"/>'+
-      '<line x1="130" y1="130" x2="100" y2="168" stroke="#cc2222" stroke-width="1.8" stroke-linecap="round"/>'+
-      '<circle cx="130" cy="130" r="5" fill="'+a+'"/>'+
-    '</svg>';
-  }());
-
-  trackPageView('About Us', '/aboutus.html');
+document.getElementById('aboutClock').innerHTML = (function(){
+  var a='#c9a84c';
+  return '<svg viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" width="250" height="250">'+
+    '<circle cx="125" cy="125" r="118" fill="#09080500" fill-opacity="0" stroke="'+a+'" stroke-width="1.5"/>'+
+    '<circle cx="125" cy="125" r="118" fill="#0a0806" stroke="'+a+'" stroke-width="1.5"/>'+
+    '<text x="125" y="110" text-anchor="middle" fill="'+a+'" font-size="9" font-family="Playfair Display,serif" letter-spacing="3">HOROLOGIUM</text>'+
+    '<text x="125" y="122" text-anchor="middle" fill="'+a+'" font-size="5.5" font-family="Montserrat,sans-serif" letter-spacing="2.5" opacity="0.5">GENEVE · EST. 1977</text>'+
+    '<rect x="123" y="14" width="4" height="18" rx="1.5" fill="'+a+'"/>'+
+    '<rect x="123" y="218" width="4" height="18" rx="1.5" fill="'+a+'"/>'+
+    '<rect x="14" y="123" width="18" height="4" rx="1.5" fill="'+a+'"/>'+
+    '<rect x="218" y="123" width="18" height="4" rx="1.5" fill="'+a+'"/>'+
+    '<line x1="125" y1="125" x2="125" y2="56" stroke="'+a+'" stroke-width="4" stroke-linecap="round"/>'+
+    '<line x1="125" y1="125" x2="183" y2="108" stroke="'+a+'" stroke-width="3" stroke-linecap="round"/>'+
+    '<line x1="125" y1="125" x2="97" y2="162" stroke="#cc2020" stroke-width="1.8" stroke-linecap="round"/>'+
+    '<circle cx="125" cy="125" r="5" fill="'+a+'"/>'+
+    '<circle cx="125" cy="125" r="2.2" fill="#0a0806"/>'+
+  '</svg>';
+}());
+trackPageView('About Us','/aboutus.html');
 </script>
 </body>
 </html>
