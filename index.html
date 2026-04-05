@@ -17,190 +17,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5T9J9LD3');</script>
 <!-- End Google Tag Manager -->
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HOROLOGIUM — Fine Timepieces</title>
-  <link rel="stylesheet" href="style.css"/>
-  <!-- GTM (replace GTM-XXXXXXX with your container ID) -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-  <style>
-    /* ---- HOMEPAGE SPECIFIC ---- */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 70px 0 0;
-    }
-    .hero-left {
-      padding: 80px 52px 80px;
-      position: relative; z-index: 2;
-    }
-    .hero-eyebrow { margin-bottom: 22px; }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3.2rem, 6vw, 5.2rem);
-      font-weight: 700;
-      color: var(--cream);
-      line-height: 1.05;
-      margin-bottom: 26px;
-    }
-    .hero-title em { font-style: italic; color: var(--gold); }
-    .hero-subtitle {
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: var(--muted);
-      max-width: 420px;
-      line-height: 1.9;
-      margin-bottom: 44px;
-    }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-    .hero-stats {
-      display: flex; gap: 48px;
-      margin-top: 64px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .stat-label {
-      font-family: var(--font-ui);
-      font-size: 0.55rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 4px;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HOROLOGIUM — Fine Timepieces</title>
+<link rel="stylesheet" href="style.css"/>
+<!-- GTM: Replace GTM-XXXXXXX with your container ID -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<style>
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;padding-top:68px}
+.hero-left{padding:80px 52px}
+.hero-eyebrow{margin-bottom:22px}
+.hero-title{font-family:var(--fd);font-size:clamp(3rem,6vw,5rem);font-weight:700;color:var(--cream);line-height:1.05;margin-bottom:24px}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:1.05rem;font-weight:300;color:var(--muted);max-width:400px;line-height:1.9;margin-bottom:40px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:44px;margin-top:60px;padding-top:36px;border-top:1px solid var(--border)}
+.stat-n{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1}
+.stat-l{font-family:var(--fu);font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.hero-right{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(201,168,76,.05) 0%,transparent 70%);overflow:hidden}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.08)}
+.r1{width:560px;height:560px;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 44s linear infinite}
+.r2{width:400px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 30s linear infinite reverse}
+.r3{width:250px;height:250px;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 18s linear infinite}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero-svg-wrap{position:relative;z-index:2;animation:floatw 7s ease-in-out infinite}
+@keyframes floatw{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
 
-    .hero-right {
-      position: relative;
-      height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
-      overflow: hidden;
-    }
-    .hero-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(201,168,76,0.1);
-    }
-    .ring1 { width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spinRing 40s linear infinite; }
-    .ring2 { width: 440px; height: 440px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spinRing 28s linear infinite reverse; }
-    .ring3 { width: 280px; height: 280px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spinRing 18s linear infinite; }
-    @keyframes spinRing { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+.feat-section{padding:80px 52px}
+.feat-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;flex-wrap:wrap;gap:20px}
 
-    .hero-watch-wrap {
-      position: relative; z-index: 2;
-      animation: heroFloat 7s ease-in-out infinite;
-    }
-    @keyframes heroFloat {
-      0%,100% { transform: translateY(0) rotate(-2deg); }
-      50% { transform: translateY(-18px) rotate(1deg); }
-    }
+.feature-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.feature-item{padding:40px 36px;border-right:1px solid var(--border);transition:background .25s}
+.feature-item:last-child{border-right:none}
+.feature-item:hover{background:var(--surface)}
+.fi-icon{font-size:1.5rem;margin-bottom:14px}
+.fi-title{font-family:var(--fd);font-size:1rem;color:var(--cream);margin-bottom:8px}
+.fi-desc{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.7}
 
-    /* Feature strip */
-    .feature-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .feature-item {
-      padding: 44px 40px;
-      border-right: 1px solid var(--border);
-      position: relative;
-      transition: background var(--transition);
-    }
-    .feature-item:last-child { border-right: none; }
-    .feature-item:hover { background: var(--surface); }
-    .feature-icon { font-size: 1.4rem; margin-bottom: 14px; }
-    .feature-title {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 6px;
-    }
-    .feature-desc { font-size: 0.88rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
+.banner{padding:80px 52px;background:linear-gradient(135deg,#0e0c06 0%,#050403 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.banner-title{font-family:var(--fd);font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:600;color:var(--cream);line-height:1.15;margin-bottom:18px}
+.banner-title em{font-style:italic;color:var(--gold)}
+.banner-body{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.9;margin-bottom:32px}
+.banner-visual{height:380px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,rgba(201,168,76,.05) 0%,transparent 70%);position:relative;overflow:hidden}
+.banner-visual::before,.banner-visual::after{content:'';position:absolute;border:1px solid rgba(201,168,76,.07);border-radius:50%}
+.banner-visual::before{width:300px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.banner-visual::after{width:180px;height:180px;top:50%;left:50%;transform:translate(-50%,-50%)}
 
-    /* Featured watches */
-    .featured-section { padding: 96px 52px; }
-    .featured-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      margin-bottom: 56px;
-    }
-
-    /* Full-width banner */
-    .banner {
-      padding: 96px 52px;
-      background: linear-gradient(135deg, #0e0c06 0%, #050403 100%);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .banner-text {}
-    .banner-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 600;
-      color: var(--cream);
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-    .banner-title em { font-style: italic; color: var(--gold); }
-    .banner-body { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.9; margin-bottom: 36px; }
-    .banner-visual {
-      position: relative;
-      height: 400px;
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 70%);
-      overflow: hidden;
-    }
-    .banner-visual::before, .banner-visual::after {
-      content: '';
-      position: absolute;
-      border: 1px solid rgba(201,168,76,0.08);
-      border-radius: 50%;
-    }
-    .banner-visual::before { width: 320px; height: 320px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-    .banner-visual::after  { width: 200px; height: 200px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
-      .hero-left { padding: 100px 32px 60px; }
-      .feature-strip { grid-template-columns: 1fr 1fr; }
-      .banner { grid-template-columns: 1fr; }
-      .featured-section { padding: 64px 32px; }
-    }
-    @media (max-width: 768px) {
-      .feature-strip { grid-template-columns: 1fr; }
-      .featured-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-      .hero-stats { gap: 28px; }
-    }
-  </style>
+@media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-right{display:none}.hero-left{padding:100px 28px 60px}.feature-strip{grid-template-columns:1fr 1fr}.banner{grid-template-columns:1fr}.feat-section{padding:60px 28px}}
+@media(max-width:768px){.feature-strip{grid-template-columns:1fr}.hero-stats{gap:28px}}
+</style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5T9J9LD3"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<!-- GTM noscript -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<!-- TOAST -->
-<div id="toast-global"><span class="toast-icon">✦</span><span class="toast-msg"></span></div>
+<div id="toast-global"><span>✦</span><span class="toast-msg"></span></div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -212,9 +85,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="contactus.html">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <a href="cart.html" class="nav-cart-btn btn">
-      Cart <span class="cart-count">0</span>
-    </a>
+    <a href="cart.html" class="nav-cart-btn">Cart <span class="cart-count">0</span></a>
   </div>
 </nav>
 
@@ -223,90 +94,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-left">
     <div class="eyebrow hero-eyebrow">Maison de Haute Horlogerie · Est. 1977</div>
     <h1 class="hero-title">Time is the<br/><em>ultimate</em><br/>luxury.</h1>
-    <p class="hero-subtitle">Curated timepieces from the world's most prestigious ateliers. Each watch tells a story centuries in the making.</p>
+    <p class="hero-sub">Curated timepieces crafted in Geneva for discerning collectors worldwide. Excellence measured in decades, not seconds.</p>
     <div class="hero-actions">
       <a href="watches.html" class="btn btn-gold">Explore Collection</a>
       <a href="aboutus.html" class="btn btn-outline">Our Story</a>
     </div>
     <div class="hero-stats">
-      <div>
-        <div class="stat-num">47</div>
-        <div class="stat-label">Years Heritage</div>
-      </div>
-      <div>
-        <div class="stat-num">20+</div>
-        <div class="stat-label">Timepieces</div>
-      </div>
-      <div>
-        <div class="stat-num">18</div>
-        <div class="stat-label">Countries</div>
-      </div>
-      <div>
-        <div class="stat-num">340h</div>
-        <div class="stat-label">Per Watch</div>
-      </div>
+      <div><div class="stat-n">47</div><div class="stat-l">Years Heritage</div></div>
+      <div><div class="stat-n">20</div><div class="stat-l">Timepieces</div></div>
+      <div><div class="stat-n">18</div><div class="stat-l">Countries</div></div>
+      <div><div class="stat-n">340h</div><div class="stat-l">Per Watch</div></div>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-ring ring1"></div>
-    <div class="hero-ring ring2"></div>
-    <div class="hero-ring ring3"></div>
-    <div class="hero-watch-wrap" id="heroWatch"></div>
+    <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+    <div class="hero-svg-wrap" id="heroWatch"></div>
   </div>
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-strip">
-  <div class="marquee-inner" id="marqueeInner"></div>
-</div>
+<div class="marquee-strip"><div class="marquee-inner" id="mq1"></div></div>
 
-<!-- FEATURE STRIP -->
+<!-- FEATURES -->
 <div class="feature-strip">
-  <div class="feature-item">
-    <div class="feature-icon">⌚</div>
-    <div class="feature-title">Swiss Movements</div>
-    <div class="feature-desc">Every calibre is Swiss-made and COSC-certified to ±2 seconds per day.</div>
-  </div>
-  <div class="feature-item">
-    <div class="feature-icon">✦</div>
-    <div class="feature-title">Hand Finishing</div>
-    <div class="feature-desc">Côtes de Genève, perlage, and mirror-polished beveling on every component.</div>
-  </div>
-  <div class="feature-item">
-    <div class="feature-icon">◎</div>
-    <div class="feature-title">White Glove Delivery</div>
-    <div class="feature-desc">Fully insured delivery in a hand-crafted presentation box worldwide.</div>
-  </div>
-  <div class="feature-item">
-    <div class="feature-icon">∞</div>
-    <div class="feature-title">Lifetime Service</div>
-    <div class="feature-desc">We service every watch we have ever made, in perpetuity.</div>
-  </div>
+  <div class="feature-item"><div class="fi-icon">⌚</div><div class="fi-title">Swiss Movements</div><div class="fi-desc">Every calibre COSC-certified to ±2 seconds/day.</div></div>
+  <div class="feature-item"><div class="fi-icon">✦</div><div class="fi-title">Hand Finishing</div><div class="fi-desc">Cotes de Geneve, perlage, mirror-polished beveling.</div></div>
+  <div class="feature-item"><div class="fi-icon">◎</div><div class="fi-title">White Glove Delivery</div><div class="fi-desc">Fully insured delivery in handcrafted presentation box.</div></div>
+  <div class="feature-item"><div class="fi-icon">∞</div><div class="fi-title">Lifetime Service</div><div class="fi-desc">We service every watch we have ever made, forever.</div></div>
 </div>
 
 <!-- FEATURED WATCHES -->
-<section class="featured-section">
-  <div class="featured-header">
+<section class="feat-section">
+  <div class="feat-header">
     <div>
       <div class="eyebrow" style="margin-bottom:12px;">Featured Collection</div>
-      <h2 class="display-title" style="font-size:clamp(2rem,3.5vw,2.8rem);">Icons of <em>Precision</em></h2>
+      <h2 class="display-title" style="font-size:clamp(1.8rem,3vw,2.6rem);">Icons of <em>Precision</em></h2>
     </div>
     <a href="watches.html" class="btn btn-outline">View All 20 Watches →</a>
   </div>
-  <div class="watches-grid" id="featuredGrid"></div>
+  <div class="watches-grid" id="featGrid"></div>
 </section>
 
-<!-- MARQUEE 2 (reversed) -->
-<div class="marquee-strip">
-  <div class="marquee-inner" id="marqueeInner2" style="animation-direction:reverse;animation-duration:22s;"></div>
-</div>
+<!-- MARQUEE 2 -->
+<div class="marquee-strip"><div class="marquee-inner" id="mq2" style="animation-direction:reverse;animation-duration:22s"></div></div>
 
 <!-- BANNER -->
 <section class="banner">
-  <div class="banner-text">
+  <div>
     <div class="eyebrow" style="margin-bottom:18px;">The Atelier Experience</div>
-    <h2 class="banner-title">Crafted with<br/><em>obsession</em>,<br/>worn with<br/>confidence.</h2>
-    <p class="banner-body">Every Horologium watch passes through the hands of at least twelve specialist craftsmen before it reaches a collector. We spend an average of 340 hours per piece — not because we must, but because we believe excellence demands nothing less.</p>
+    <h2 class="banner-title">Crafted with <em>obsession</em>,<br/>worn with confidence.</h2>
+    <p class="banner-body">Every Horologium watch passes through the hands of twelve specialist craftsmen before reaching a collector. 340 hours per piece — because excellence demands nothing less.</p>
     <a href="aboutus.html" class="btn btn-gold">Discover Our Story</a>
   </div>
   <div class="banner-visual" id="bannerWatch"></div>
@@ -315,93 +152,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
-    <div>
-      <div class="footer-logo">HOROLOGIUM</div>
-      <p class="footer-tagline">Purveyor of extraordinary timepieces since 1977. Where mechanical art meets the science of time.</p>
-    </div>
-    <div class="footer-col">
-      <h5>Collection</h5>
-      <ul>
-        <li><a href="watches.html">All Watches</a></li>
-        <li><a href="watches.html?cat=dress">Dress Watches</a></li>
-        <li><a href="watches.html?cat=sport">Sport</a></li>
-        <li><a href="watches.html?cat=chronograph">Chronographs</a></li>
-        <li><a href="watches.html?cat=limited">Limited Editions</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Company</h5>
-      <ul>
-        <li><a href="aboutus.html">Our Story</a></li>
-        <li><a href="aboutus.html#team">Our Team</a></li>
-        <li><a href="contactus.html">Contact Us</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Services</h5>
-      <ul>
-        <li><a href="#">Authentication</a></li>
-        <li><a href="#">Watch Servicing</a></li>
-        <li><a href="#">Bespoke Orders</a></li>
-        <li><a href="#">Insurance</a></li>
-      </ul>
-    </div>
+    <div><div class="footer-logo">HOROLOGIUM</div><p class="footer-tagline">Purveyor of extraordinary timepieces since 1977. Geneva, Switzerland.</p></div>
+    <div class="footer-col"><h5>Collection</h5><ul><li><a href="watches.html">All Watches</a></li><li><a href="watches.html?cat=dress">Dress</a></li><li><a href="watches.html?cat=sport">Sport</a></li><li><a href="watches.html?cat=limited">Limited Editions</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="aboutus.html">About Us</a></li><li><a href="contactus.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Services</h5><ul><li><a href="#">Authentication</a></li><li><a href="#">Servicing</a></li><li><a href="#">Bespoke Orders</a></li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 HOROLOGIUM SA. All Rights Reserved. Geneva, Switzerland.</p>
-    <p>Privacy Policy · Terms &amp; Conditions · Returns</p>
-  </div>
+  <div class="footer-bottom"><p>© 2025 HOROLOGIUM SA. All Rights Reserved.</p><p>Privacy · Terms · Returns</p></div>
 </footer>
 
 <script src="watches-data.js"></script>
 <script>
-  /* ---- HERO WATCH ---- */
-  document.getElementById('heroWatch').innerHTML = generateWatchSVG(WATCHES[3], 340);
+// Hero watch
+document.getElementById('heroWatch').innerHTML = generateWatchSVG(WATCHES[3], 300);
+// Banner watch
+document.getElementById('bannerWatch').innerHTML = generateWatchSVG(WATCHES[0], 240);
 
-  /* ---- BANNER WATCH ---- */
-  document.getElementById('bannerWatch').innerHTML = generateWatchSVG(WATCHES[0], 260);
+// Marquee
+var MQ = ['Swiss Movement','Sapphire Crystal','COSC Certified','Hand Finishing','18k Gold Cases','Limited Editions','White Glove Delivery','Lifetime Service','Geneva Hallmark','Water Resistance'];
+function buildMQ(id, rev) {
+  var items = MQ.concat(MQ);
+  document.getElementById(id).innerHTML = items.map(function(t){
+    return '<div class="marquee-item"><span>◆</span>'+t+'</div>';
+  }).join('');
+}
+buildMQ('mq1'); buildMQ('mq2');
 
-  /* ---- MARQUEE ---- */
-  var MARQUEE_ITEMS = ['Swiss Movement','Sapphire Crystal','COSC Certified','Handcrafted Dials',
-    '18k Gold Cases','Limited Editions','White Glove Delivery','Lifetime Service',
-    'Geneva Hallmark','Water Resistance','In-House Calibres','Bespoke Straps'];
-  function buildMarquee(id) {
-    var doubled = MARQUEE_ITEMS.concat(MARQUEE_ITEMS);
-    document.getElementById(id).innerHTML = doubled.map(function(t){
-      return '<div class="marquee-item"><span>◆</span>'+t+'</div>';
-    }).join('');
-  }
-  buildMarquee('marqueeInner');
-  buildMarquee('marqueeInner2');
-
-  /* ---- FEATURED GRID (first 4) ---- */
-  function buildCard(w) {
-    return '<div class="watch-card">'+
-      '<div class="watch-card-img" style="background:radial-gradient(ellipse at center,'+w.bg+' 0%,#040302 100%);">'+
-        generateWatchSVG(w, 155)+
-        (w.badge ? '<div class="watch-badge badge-'+w.badge+'">'+w.badge.toUpperCase()+'</div>' : '')+
+// Featured cards (first 4 watches)
+function buildCard(w) {
+  var inCart = getCart().find(function(c){ return c.id === w.id; });
+  return '<div class="watch-card">'+
+    '<div class="watch-card-img" style="background:radial-gradient(ellipse at center,'+w.bg+' 0%,#030201 100%);">'+
+      generateWatchSVG(w, 140)+
+      (w.badge ? '<div class="watch-badge badge-'+w.badge+'">'+w.badge.toUpperCase()+'</div>' : '')+
+    '</div>'+
+    '<div class="watch-card-body">'+
+      '<div class="watch-card-brand">'+w.brand+'</div>'+
+      '<div class="watch-card-name">'+w.name+'</div>'+
+      '<div class="watch-card-ref">Ref. '+w.ref+'</div>'+
+      '<div class="watch-card-desc">'+w.info+'</div>'+
+      '<div class="watch-card-footer">'+
+        '<div><div class="price-label">Price (incl. GST)</div><div class="price-val">'+fmtINR(w.price)+'</div></div>'+
+        '<button class="btn-add-cart'+(inCart?' in-cart':'')+'" data-watch-id="'+w.id+'" onclick="addToCart(\''+w.id+'\')">'+
+          (inCart ? 'In Cart \u2713' : 'Add to Cart')+
+        '</button>'+
       '</div>'+
-      '<div class="watch-card-body">'+
-        '<div class="watch-card-brand">'+w.brand+'</div>'+
-        '<div class="watch-card-name">'+w.name+'</div>'+
-        '<div class="watch-card-ref">Ref. '+w.ref+'</div>'+
-        '<div class="watch-card-desc">'+w.desc+'</div>'+
-        '<div class="watch-card-footer">'+
-          '<div class="watch-price-block">'+
-            '<div class="watch-price-label">Price</div>'+
-            '<div class="watch-price">'+fmtPrice(w.price)+'</div>'+
-          '</div>'+
-          '<button class="btn-add-cart" data-watch-id="'+w.id+'" onclick="addToCart(\''+w.id+'\')">Add to Cart</button>'+
-        '</div>'+
-      '</div>'+
-    '</div>';
-  }
+    '</div>'+
+  '</div>';
+}
 
-  document.getElementById('featuredGrid').innerHTML = WATCHES.slice(0,4).map(buildCard).join('');
-  refreshAddBtns();
+document.getElementById('featGrid').innerHTML = WATCHES.slice(0,4).map(buildCard).join('');
 
-  /* ---- PAGE VIEW ---- */
-  trackPageView('Home', '/index.html');
+trackPageView('Home','/index.html');
 </script>
 </body>
 </html>
