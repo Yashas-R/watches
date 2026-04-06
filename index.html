@@ -18,53 +18,304 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5T9J9LD3');</script>
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>HOROLOGIUM — Fine Timepieces</title>
-<link rel="stylesheet" href="style.css"/>
-<!-- GTM: Replace GTM-XXXXXXX with your container ID -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;padding-top:68px}
-.hero-left{padding:80px 52px}
-.hero-eyebrow{margin-bottom:22px}
-.hero-title{font-family:var(--fd);font-size:clamp(3rem,6vw,5rem);font-weight:700;color:var(--cream);line-height:1.05;margin-bottom:24px}
-.hero-title em{font-style:italic;color:var(--gold)}
-.hero-sub{font-size:1.05rem;font-weight:300;color:var(--muted);max-width:400px;line-height:1.9;margin-bottom:40px}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-.hero-stats{display:flex;gap:44px;margin-top:60px;padding-top:36px;border-top:1px solid var(--border)}
-.stat-n{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1}
-.stat-l{font-family:var(--fu);font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.hero-right{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(201,168,76,.05) 0%,transparent 70%);overflow:hidden}
-.ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.08)}
-.r1{width:560px;height:560px;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 44s linear infinite}
-.r2{width:400px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 30s linear infinite reverse}
-.r3{width:250px;height:250px;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 18s linear infinite}
-@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-.hero-svg-wrap{position:relative;z-index:2;animation:floatw 7s ease-in-out infinite}
-@keyframes floatw{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0a0906;color:#d8ceb8;font-family:'Montserrat',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:'Montserrat',sans-serif}
+img{display:block;max-width:100%}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0a0906}
+::-webkit-scrollbar-thumb{background:#7a6530;border-radius:3px}
 
-.feat-section{padding:80px 52px}
-.feat-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;flex-wrap:wrap;gap:20px}
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:70px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 52px;
+  background:rgba(10,9,6,0.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #28210e;
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:700;
+  color:#c9a84c;letter-spacing:0.08em;
+}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{
+  font-size:0.65rem;font-weight:500;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:#6e6550;transition:color 0.2s;
+}
+.nav-links a:hover,.nav-links a.active{color:#c9a84c}
+.cart-pill{
+  position:relative;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 22px;
+  border:1px solid #7a6530;color:#c9a84c;background:transparent;
+  font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  transition:all 0.22s;
+}
+.cart-pill:hover{background:#c9a84c;color:#0a0906}
+.cart-pill a{color:inherit;display:flex;align-items:center;gap:8px}
+#badge{
+  position:absolute;top:-7px;right:-7px;
+  width:19px;height:19px;border-radius:50%;
+  background:#8b1a1a;color:#fff;
+  font-size:0.55rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
 
-.feature-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.feature-item{padding:40px 36px;border-right:1px solid var(--border);transition:background .25s}
-.feature-item:last-child{border-right:none}
-.feature-item:hover{background:var(--surface)}
-.fi-icon{font-size:1.5rem;margin-bottom:14px}
-.fi-title{font-family:var(--fd);font-size:1rem;color:var(--cream);margin-bottom:8px}
-.fi-desc{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.7}
+/* ── HERO ── */
+.hero{
+  min-height:100vh;padding-top:70px;
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 56px 80px 52px;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:0.6rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  color:#c9a84c;margin-bottom:24px;
+}
+.hero-tag::before{content:'';width:28px;height:1px;background:#c9a84c}
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,5.5vw,4.8rem);
+  font-weight:700;color:#f0e8d6;
+  line-height:1.06;margin-bottom:20px;
+}
+.hero-h1 em{font-style:italic;color:#c9a84c}
+.hero-p{
+  font-size:0.96rem;font-weight:300;color:#6e6550;
+  max-width:420px;line-height:1.95;margin-bottom:40px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
+.btn-gold{
+  padding:14px 34px;background:#c9a84c;color:#0a0906;
+  border:none;font-size:0.63rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  transition:all 0.22s;display:inline-block;
+}
+.btn-gold:hover{background:#e8c96a;transform:translateY(-2px)}
+.btn-ghost{
+  padding:13px 32px;background:transparent;
+  color:#c9a84c;border:1px solid #7a6530;
+  font-size:0.63rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;
+  transition:all 0.22s;display:inline-block;
+}
+.btn-ghost:hover{background:rgba(201,168,76,0.09);border-color:#c9a84c}
+.hero-stats{display:flex;gap:40px}
+.stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#c9a84c;line-height:1}
+.stat-l{font-size:0.56rem;letter-spacing:0.2em;text-transform:uppercase;color:#6e6550;margin-top:4px}
 
-.banner{padding:80px 52px;background:linear-gradient(135deg,#0e0c06 0%,#050403 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.banner-title{font-family:var(--fd);font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:600;color:var(--cream);line-height:1.15;margin-bottom:18px}
-.banner-title em{font-style:italic;color:var(--gold)}
-.banner-body{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.9;margin-bottom:32px}
-.banner-visual{height:380px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,rgba(201,168,76,.05) 0%,transparent 70%);position:relative;overflow:hidden}
-.banner-visual::before,.banner-visual::after{content:'';position:absolute;border:1px solid rgba(201,168,76,.07);border-radius:50%}
-.banner-visual::before{width:300px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%)}
-.banner-visual::after{width:180px;height:180px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.hero-right{
+  position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(ellipse 75% 75% at 50% 50%,rgba(201,168,76,0.05) 0%,transparent 70%);
+}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.07)}
+.r1{width:560px;height:560px;animation:rspin 48s linear infinite}
+.r2{width:400px;height:400px;animation:rspin 32s linear infinite reverse}
+.r3{width:250px;height:250px;animation:rspin 20s linear infinite}
+@keyframes rspin{to{transform:rotate(360deg)}}
+.hero-watch{position:relative;z-index:2;animation:wfloat 7s ease-in-out infinite}
+@keyframes wfloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
 
-@media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-right{display:none}.hero-left{padding:100px 28px 60px}.feature-strip{grid-template-columns:1fr 1fr}.banner{grid-template-columns:1fr}.feat-section{padding:60px 28px}}
-@media(max-width:768px){.feature-strip{grid-template-columns:1fr}.hero-stats{gap:28px}}
+/* ── ANNOUNCE BAR ── */
+.announce{
+  background:#c9a84c;color:#0a0906;
+  text-align:center;padding:11px 20px;
+  font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+}
+
+/* ── MARQUEE ── */
+.marquee{border-top:1px solid #28210e;border-bottom:1px solid #28210e;padding:15px 0;overflow:hidden;background:#111009}
+.marquee-track{display:flex;width:max-content;animation:mscroll 28s linear infinite}
+.mitem{display:flex;align-items:center;gap:10px;padding:0 36px;border-right:1px solid #28210e;font-size:0.56rem;font-weight:500;letter-spacing:0.26em;text-transform:uppercase;color:#6e6550;white-space:nowrap}
+.mitem span{color:#c9a84c;font-size:0.48rem}
+@keyframes mscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── CATEGORY ROW ── */
+.cats{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #28210e}
+.cat-tile{
+  padding:32px 20px;border-right:1px solid #28210e;text-align:center;
+  transition:background 0.22s;cursor:pointer;display:block;
+}
+.cat-tile:last-child{border-right:none}
+.cat-tile:hover{background:#17150e}
+.cat-ico{font-size:1.6rem;margin-bottom:9px}
+.cat-n{font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:3px}
+.cat-c{font-size:0.7rem;color:#6e6550}
+
+/* ── SECTION ── */
+.section{padding:80px 52px}
+.sec-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:14px}
+.sec-eyebrow{display:flex;align-items:center;gap:10px;font-size:0.6rem;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:#c9a84c;margin-bottom:10px}
+.sec-eyebrow::before{content:'';width:22px;height:1px;background:#c9a84c}
+.sec-h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;color:#f0e8d6;line-height:1.15}
+.sec-h2 em{font-style:italic;color:#c9a84c}
+.see-all{padding:10px 24px;background:transparent;border:1px solid #7a6530;color:#c9a84c;font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;transition:all 0.22s;display:inline-block;white-space:nowrap}
+.see-all:hover{background:#c9a84c;color:#0a0906}
+
+/* ── PRODUCT GRID ── */
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+
+/* ── PRODUCT CARD ── */
+.card{
+  background:#17150e;border:1px solid #28210e;
+  display:flex;flex-direction:column;
+  position:relative;
+  transition:border-color 0.28s,transform 0.28s,box-shadow 0.28s;
+}
+.card:hover{border-color:#3d3010;transform:translateY(-6px);box-shadow:0 20px 52px rgba(0,0,0,0.65);z-index:2}
+
+/* badge */
+.badge{position:absolute;top:12px;left:12px;z-index:1;padding:4px 10px;font-size:0.52rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase}
+.b-new{background:#c9a84c;color:#0a0906}
+.b-ltd{background:#1a1a2e;color:#a090e0;border:1px solid #302860}
+.b-rare{background:#1a2a1a;color:#6fcf97;border:1px solid #2a4a2a}
+.b-hot{background:#5c1a00;color:#ff9060;border:1px solid #8b3000}
+
+/* wish */
+.wish{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(10,9,6,0.7);border:1px solid #28210e;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#6e6550;transition:all 0.2s;cursor:pointer}
+.wish:hover{border-color:#c9a84c;color:#c9a84c}
+
+/* watch image area */
+.card-img{
+  height:240px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;cursor:pointer;
+}
+.card-img svg{transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1)}
+.card:hover .card-img svg{transform:scale(1.1) rotate(5deg)}
+
+/* rating */
+.rating{display:flex;align-items:center;gap:5px;margin-bottom:5px}
+.stars{color:#c9a84c;font-size:0.6rem;letter-spacing:1px}
+.rcount{font-size:0.58rem;color:#6e6550}
+
+/* body */
+.card-body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
+.c-brand{font-size:0.54rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:5px}
+.c-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#f0e8d6;line-height:1.25;margin-bottom:4px}
+.c-ref{font-size:0.58rem;color:#6e6550;letter-spacing:0.05em;margin-bottom:8px}
+.c-desc{font-size:0.76rem;color:#6e6550;font-weight:300;line-height:1.65;margin-bottom:10px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.c-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.c-tag{background:#111009;border:1px solid #28210e;padding:3px 7px;font-size:0.52rem;letter-spacing:0.08em;color:#6e6550}
+
+/* footer */
+.card-footer{border-top:1px solid #28210e;padding-top:13px;display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+.price-lbl{font-size:0.56rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#6e6550;margin-bottom:3px}
+.price{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#c9a84c;line-height:1}
+.gst{font-size:0.5rem;color:#6e6550;margin-top:2px}
+
+/* ADD TO CART BUTTON */
+.atc{
+  padding:10px 14px;background:#c9a84c;color:#0a0906;
+  border:none;
+  font-size:0.58rem;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  transition:all 0.22s;white-space:nowrap;flex-shrink:0;
+}
+.atc:hover{background:#e8c96a;transform:translateY(-1px)}
+.atc:active{transform:scale(0.97)}
+.atc.done{background:#3d3010;color:#c9a84c;pointer-events:none}
+
+/* ── EDITORIAL ── */
+.editorial{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid #28210e;border-bottom:1px solid #28210e;
+}
+.ed-l{padding:80px 64px;background:linear-gradient(135deg,#0d0b05 0%,#060504 100%);display:flex;flex-direction:column;justify-content:center;border-right:1px solid #28210e}
+.ed-tag{font-size:0.58rem;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;color:#c9a84c;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.ed-tag::before{content:'';width:22px;height:1px;background:#c9a84c}
+.ed-h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.7rem);font-weight:700;color:#f0e8d6;line-height:1.12;margin-bottom:16px}
+.ed-h2 em{font-style:italic;color:#c9a84c}
+.ed-p{font-size:0.88rem;color:#6e6550;font-weight:300;line-height:1.95;margin-bottom:30px;max-width:400px}
+.ed-r{display:flex;align-items:center;justify-content:center;min-height:400px;background:radial-gradient(ellipse at center,rgba(201,168,76,0.05) 0%,transparent 70%);position:relative;overflow:hidden}
+.ed-r::before,.ed-r::after{content:'';position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.07)}
+.ed-r::before{width:320px;height:320px}
+.ed-r::after{width:200px;height:200px}
+
+/* ── WHY STRIP ── */
+.why{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #28210e;border-bottom:1px solid #28210e}
+.why-item{padding:40px 32px;border-right:1px solid #28210e;transition:background 0.22s}
+.why-item:last-child{border-right:none}
+.why-item:hover{background:#111009}
+.why-ico{font-size:1.5rem;margin-bottom:12px}
+.why-t{font-family:'Playfair Display',serif;font-size:0.98rem;color:#f0e8d6;margin-bottom:7px}
+.why-d{font-size:0.78rem;color:#6e6550;font-weight:300;line-height:1.7}
+
+/* ── NEWSLETTER ── */
+.newsletter{padding:72px 52px;text-align:center;background:linear-gradient(180deg,#111009 0%,#0a0906 100%);border-top:1px solid #28210e}
+.nl-tag{font-size:0.6rem;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;color:#c9a84c;margin-bottom:14px}
+.nl-h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.8vw,2.1rem);color:#f0e8d6;margin-bottom:8px}
+.nl-h2 em{font-style:italic;color:#c9a84c}
+.nl-p{font-size:0.86rem;color:#6e6550;margin-bottom:28px}
+.nl-form{display:flex;max-width:420px;margin:0 auto}
+.nl-form input{flex:1;background:#17150e;border:1px solid #28210e;border-right:none;color:#f0e8d6;padding:12px 16px;font-size:0.82rem;outline:none;font-family:'Montserrat',sans-serif}
+.nl-form input::placeholder{color:#6e6550}
+.nl-form button{padding:12px 22px;background:#c9a84c;color:#0a0906;font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s}
+.nl-form button:hover{background:#e8c96a}
+
+/* ── TOAST ── */
+#toast{
+  position:fixed;bottom:26px;right:26px;z-index:9999;
+  background:#17150e;border:1px solid #c9a84c;
+  padding:13px 20px;display:flex;align-items:center;gap:9px;
+  font-size:0.64rem;font-weight:500;letter-spacing:0.1em;color:#c9a84c;
+  transform:translateY(80px);opacity:0;
+  transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  pointer-events:none;max-width:300px;
+}
+#toast.show{transform:translateY(0);opacity:1}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid #28210e;padding:60px 52px 24px}
+.f-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.f-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#c9a84c;margin-bottom:10px}
+.f-tag{font-size:0.84rem;color:#6e6550;font-weight:300;line-height:1.85;max-width:270px;margin-bottom:20px}
+.f-col h5{font-size:0.56rem;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:#c9a84c;margin-bottom:16px}
+.f-col ul{list-style:none}
+.f-col ul li{margin-bottom:9px}
+.f-col ul li a{font-size:0.84rem;color:#6e6550;font-weight:300;transition:color 0.2s}
+.f-col ul li a:hover{color:#c9a84c}
+.f-bottom{padding-top:22px;border-top:1px solid #28210e;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.f-bottom p{font-size:0.58rem;letter-spacing:0.1em;color:#6e6550}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1280px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:1024px){
+  nav{padding:0 28px}
+  .hero{grid-template-columns:1fr}.hero-right{display:none}.hero-left{padding:100px 28px 60px}
+  .cats{grid-template-columns:repeat(3,1fr)}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .editorial{grid-template-columns:1fr}.ed-r{display:none}
+  .why{grid-template-columns:1fr 1fr}
+  .section{padding:60px 28px}
+  .f-grid{grid-template-columns:1fr 1fr;gap:32px}
+  footer{padding:44px 28px 20px}
+}
+@media(max-width:768px){
+  nav{padding:0 18px}.nav-links{display:none}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .why{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr}
+  .section{padding:44px 18px}
+  footer{padding:36px 18px 16px}
+  .hero-stats{gap:22px}
+}
+@media(max-width:480px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -72,137 +323,835 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5T9J9LD3"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<div id="toast-global"><span>✦</span><span class="toast-msg"></span></div>
+
+<!-- TOAST -->
+<div id="toast"><span>✦</span><span id="tmsg"></span></div>
 
 <!-- NAV -->
-<nav class="nav">
-  <a href="index.html" class="nav-logo">HOROLOGIUM</a>
+<nav>
+  <a href="index.html" class="logo">HOROLOGIUM</a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="watches.html">Collection</a></li>
     <li><a href="aboutus.html">About</a></li>
     <li><a href="contactus.html">Contact</a></li>
   </ul>
-  <div class="nav-right">
-    <a href="cart.html" class="nav-cart-btn">Cart <span class="cart-count">0</span></a>
+  <div class="cart-pill">
+    <a href="cart.html">🛒 Cart</a>
+    <span id="badge">0</span>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="eyebrow hero-eyebrow">Maison de Haute Horlogerie · Est. 1977</div>
-    <h1 class="hero-title">Time is the<br/><em>ultimate</em><br/>luxury.</h1>
-    <p class="hero-sub">Curated timepieces crafted in Geneva for discerning collectors worldwide. Excellence measured in decades, not seconds.</p>
-    <div class="hero-actions">
-      <a href="watches.html" class="btn btn-gold">Explore Collection</a>
-      <a href="aboutus.html" class="btn btn-outline">Our Story</a>
+    <div class="hero-tag">Maison de Haute Horlogerie · Est. 1977</div>
+    <h1 class="hero-h1">Time is the<br/><em>ultimate</em><br/>luxury.</h1>
+    <p class="hero-p">Curated Swiss timepieces for the discerning collector. Each watch carries decades of tradition in every tick — crafted in Geneva, now in India.</p>
+    <div class="hero-btns">
+      <a href="watches.html" class="btn-gold">Shop Collection</a>
+      <a href="aboutus.html" class="btn-ghost">Our Heritage</a>
     </div>
     <div class="hero-stats">
       <div><div class="stat-n">47</div><div class="stat-l">Years Heritage</div></div>
-      <div><div class="stat-n">20</div><div class="stat-l">Timepieces</div></div>
-      <div><div class="stat-n">18</div><div class="stat-l">Countries</div></div>
+      <div><div class="stat-n">10</div><div class="stat-l">Timepieces</div></div>
       <div><div class="stat-n">340h</div><div class="stat-l">Per Watch</div></div>
+      <div><div class="stat-n">18</div><div class="stat-l">Countries</div></div>
     </div>
   </div>
   <div class="hero-right">
     <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
-    <div class="hero-svg-wrap" id="heroWatch"></div>
+    <div class="hero-watch">
+      <!-- Hero watch — Heritage Tourbillon, purple accent -->
+      <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="310" height="465">
+        <rect x="80" y="4" width="40" height="56" rx="8" fill="#0a0810" stroke="#9070c0" stroke-width="1.5"/>
+        <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.45)"/>
+        <circle cx="100" cy="22" r="2.6" fill="rgba(0,0,0,0.6)"/>
+        <circle cx="100" cy="36" r="2.6" fill="rgba(0,0,0,0.6)"/>
+        <circle cx="100" cy="50" r="2.6" fill="rgba(0,0,0,0.6)"/>
+        <rect x="44" y="56" width="112" height="144" rx="20" fill="#1a1028" stroke="#9070c0" stroke-width="2.2"/>
+        <rect x="49" y="61" width="102" height="134" rx="17" fill="#0a0810"/>
+        <rect x="154" y="108" width="13" height="32" rx="5" fill="#130f1a" stroke="#9070c0" stroke-width="1.3"/>
+        <circle cx="100" cy="130" r="48" fill="#050308" stroke="#9070c0" stroke-width="1.4"/>
+        <circle cx="100" cy="130" r="42" fill="#0a0810" stroke="#9070c0" stroke-width="0.5" stroke-dasharray="1 4"/>
+        <rect x="97" y="86" width="6" height="14" rx="2" fill="#9070c0"/>
+        <rect x="97" y="160" width="6" height="14" rx="2" fill="#9070c0"/>
+        <rect x="144" y="127" width="14" height="6" rx="2" fill="#9070c0"/>
+        <rect x="42" y="127" width="14" height="6" rx="2" fill="#9070c0"/>
+        <text x="100" y="113" text-anchor="middle" fill="#9070c0" font-size="6.5" font-family="Playfair Display,serif" letter-spacing="2.5">HOROLOGIUM</text>
+        <text x="100" y="124" text-anchor="middle" fill="#9070c0" font-size="4" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.55">TOURBILLON</text>
+        <circle cx="100" cy="148" r="13" fill="none" stroke="#9070c0" stroke-width="0.9"/>
+        <circle cx="100" cy="148" r="9" fill="none" stroke="#9070c0" stroke-width="0.5" stroke-dasharray="2 2"/>
+        <line x1="100" y1="135" x2="100" y2="161" stroke="#9070c0" stroke-width="0.5" opacity="0.5"/>
+        <line x1="87" y1="148" x2="113" y2="148" stroke="#9070c0" stroke-width="0.5" opacity="0.5"/>
+        <line x1="100" y1="130" x2="100" y2="96" stroke="#9070c0" stroke-width="3.8" stroke-linecap="round"/>
+        <line x1="100" y1="130" x2="131" y2="115" stroke="#9070c0" stroke-width="2.8" stroke-linecap="round"/>
+        <line x1="100" y1="130" x2="74" y2="148" stroke="#cc2020" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="100" cy="130" r="4.5" fill="#9070c0"/>
+        <circle cx="100" cy="130" r="2.2" fill="#0a0810"/>
+        <rect x="80" y="238" width="40" height="56" rx="8" fill="#0a0810" stroke="#9070c0" stroke-width="1.5"/>
+        <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.45)"/>
+        <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.55)" stroke="#9070c0" stroke-width="0.9"/>
+      </svg>
+    </div>
   </div>
 </section>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce">✦ &nbsp; Free White-Glove Delivery Across India &nbsp;·&nbsp; All Prices Include 18% GST &nbsp;·&nbsp; Lifetime Servicing Guarantee &nbsp; ✦</div>
 
 <!-- MARQUEE -->
-<div class="marquee-strip"><div class="marquee-inner" id="mq1"></div></div>
-
-<!-- FEATURES -->
-<div class="feature-strip">
-  <div class="feature-item"><div class="fi-icon">⌚</div><div class="fi-title">Swiss Movements</div><div class="fi-desc">Every calibre COSC-certified to ±2 seconds/day.</div></div>
-  <div class="feature-item"><div class="fi-icon">✦</div><div class="fi-title">Hand Finishing</div><div class="fi-desc">Cotes de Geneve, perlage, mirror-polished beveling.</div></div>
-  <div class="feature-item"><div class="fi-icon">◎</div><div class="fi-title">White Glove Delivery</div><div class="fi-desc">Fully insured delivery in handcrafted presentation box.</div></div>
-  <div class="feature-item"><div class="fi-icon">∞</div><div class="fi-title">Lifetime Service</div><div class="fi-desc">We service every watch we have ever made, forever.</div></div>
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="mitem"><span>◆</span>Swiss Made</div>
+    <div class="mitem"><span>◆</span>COSC Certified</div>
+    <div class="mitem"><span>◆</span>Sapphire Crystal</div>
+    <div class="mitem"><span>◆</span>18k Gold Cases</div>
+    <div class="mitem"><span>◆</span>Hand Finished</div>
+    <div class="mitem"><span>◆</span>Limited Editions</div>
+    <div class="mitem"><span>◆</span>Free Delivery India</div>
+    <div class="mitem"><span>◆</span>Lifetime Service</div>
+    <div class="mitem"><span>◆</span>Geneva Hallmark</div>
+    <div class="mitem"><span>◆</span>18% GST Included</div>
+    <div class="mitem"><span>◆</span>Swiss Made</div>
+    <div class="mitem"><span>◆</span>COSC Certified</div>
+    <div class="mitem"><span>◆</span>Sapphire Crystal</div>
+    <div class="mitem"><span>◆</span>18k Gold Cases</div>
+    <div class="mitem"><span>◆</span>Hand Finished</div>
+    <div class="mitem"><span>◆</span>Limited Editions</div>
+    <div class="mitem"><span>◆</span>Free Delivery India</div>
+    <div class="mitem"><span>◆</span>Lifetime Service</div>
+    <div class="mitem"><span>◆</span>Geneva Hallmark</div>
+    <div class="mitem"><span>◆</span>18% GST Included</div>
+  </div>
 </div>
 
-<!-- FEATURED WATCHES -->
-<section class="feat-section">
-  <div class="feat-header">
+<!-- CATEGORIES -->
+<div class="cats">
+  <a href="watches.html?cat=dress" class="cat-tile"><div class="cat-ico">🕐</div><div class="cat-n">Dress</div><div class="cat-c">3 Watches</div></a>
+  <a href="watches.html?cat=sport" class="cat-tile"><div class="cat-ico">🏊</div><div class="cat-n">Sport</div><div class="cat-c">2 Watches</div></a>
+  <a href="watches.html?cat=chronograph" class="cat-tile"><div class="cat-ico">⏱</div><div class="cat-n">Chronograph</div><div class="cat-c">2 Watches</div></a>
+  <a href="watches.html?cat=heritage" class="cat-tile"><div class="cat-ico">🏛</div><div class="cat-n">Heritage</div><div class="cat-c">1 Watch</div></a>
+  <a href="watches.html?cat=limited" class="cat-tile"><div class="cat-ico">💎</div><div class="cat-n">Limited Edition</div><div class="cat-c">2 Watches</div></a>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     FEATURED WATCHES — 10 HARDCODED CARDS
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="sec-top">
     <div>
-      <div class="eyebrow" style="margin-bottom:12px;">Featured Collection</div>
-      <h2 class="display-title" style="font-size:clamp(1.8rem,3vw,2.6rem);">Icons of <em>Precision</em></h2>
+      <div class="sec-eyebrow">Featured Collection</div>
+      <h2 class="sec-h2">Icons of <em>Precision</em></h2>
     </div>
-    <a href="watches.html" class="btn btn-outline">View All 20 Watches →</a>
+    <a href="watches.html" class="see-all">View Full Collection →</a>
   </div>
-  <div class="watches-grid" id="featGrid"></div>
+
+  <div class="grid">
+
+    <!-- ═══ WATCH 1 — Perpetuel Classique ═══ -->
+    <div class="card">
+      <div class="badge b-new">New</div>
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#201808 0%,#060402 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#100d06" stroke="#e8c96a" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <rect x="44" y="56" width="112" height="144" rx="20" fill="#221a08" stroke="#e8c96a" stroke-width="2"/>
+          <rect x="49" y="61" width="102" height="134" rx="17" fill="#100d06"/>
+          <rect x="154" y="108" width="13" height="32" rx="5" fill="#1a1306" stroke="#e8c96a" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="48" fill="#060401" stroke="#e8c96a" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="42" fill="#100d06" stroke="#e8c96a" stroke-width="0.4" stroke-dasharray="1 4"/>
+          <rect x="97" y="86" width="6" height="14" rx="2" fill="#e8c96a"/>
+          <rect x="97" y="160" width="6" height="14" rx="2" fill="#e8c96a"/>
+          <rect x="144" y="127" width="14" height="6" rx="2" fill="#e8c96a"/>
+          <rect x="42" y="127" width="14" height="6" rx="2" fill="#e8c96a"/>
+          <text x="100" y="113" text-anchor="middle" fill="#e8c96a" font-size="6.5" font-family="Playfair Display,serif" letter-spacing="2.5">HOROLOGIUM</text>
+          <text x="100" y="124" text-anchor="middle" fill="#e8c96a" font-size="4" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.5">GENEVE</text>
+          <circle cx="100" cy="150" r="11" fill="none" stroke="#e8c96a" stroke-width="0.7" opacity="0.5"/>
+          <line x1="100" y1="130" x2="100" y2="96" stroke="#e8c96a" stroke-width="3.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="131" y2="115" stroke="#e8c96a" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="74" y2="148" stroke="#cc2020" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="4.5" fill="#e8c96a"/>
+          <circle cx="100" cy="130" r="2.2" fill="#100d06"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#100d06" stroke="#e8c96a" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#e8c96a" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★★</span><span class="rcount">(38)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Perpetuel Classique</div>
+        <div class="c-ref">Ref. HC-2241 · 40mm Rose Gold</div>
+        <div class="c-desc">Grand feu enamel dial with perpetual calendar complication. Hand-guilloché seconds.</div>
+        <div class="c-tags"><span class="c-tag">Dress</span><span class="c-tag">30m WR</span><span class="c-tag">Perp. Cal.</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹18,50,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W001','Perpetuel Classique','1850000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WATCH 2 — Ocean Profond I ═══ -->
+    <div class="card">
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#081020 0%,#020408 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#060c18" stroke="#4a90d9" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <rect x="44" y="56" width="112" height="144" rx="20" fill="#0a1828" stroke="#4a90d9" stroke-width="2"/>
+          <rect x="49" y="61" width="102" height="134" rx="17" fill="#060c18"/>
+          <rect x="154" y="100" width="13" height="40" rx="5" fill="#081020" stroke="#4a90d9" stroke-width="1.3"/>
+          <rect x="154" y="96" width="11" height="8" rx="3" fill="#081020" stroke="#4a90d9" stroke-width="1.1"/>
+          <circle cx="100" cy="130" r="48" fill="#030810" stroke="#4a90d9" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="42" fill="#060c18" stroke="#4a90d9" stroke-width="0.4" stroke-dasharray="1 4"/>
+          <circle cx="100" cy="82" r="3" fill="#4a90d9"/>
+          <rect x="97" y="86" width="6" height="14" rx="2" fill="#4a90d9"/>
+          <rect x="97" y="160" width="6" height="14" rx="2" fill="#4a90d9"/>
+          <rect x="144" y="127" width="14" height="6" rx="2" fill="#4a90d9"/>
+          <rect x="42" y="127" width="14" height="6" rx="2" fill="#4a90d9"/>
+          <text x="100" y="113" text-anchor="middle" fill="#4a90d9" font-size="6.5" font-family="Playfair Display,serif" letter-spacing="2.5">HOROLOGIUM</text>
+          <text x="100" y="124" text-anchor="middle" fill="#4a90d9" font-size="4" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.55">DIVER 300M</text>
+          <line x1="100" y1="130" x2="100" y2="96" stroke="#4a90d9" stroke-width="3.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="131" y2="115" stroke="#4a90d9" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="74" y2="148" stroke="#ff6030" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="4.5" fill="#4a90d9"/>
+          <circle cx="100" cy="130" r="2.2" fill="#060c18"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#060c18" stroke="#4a90d9" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#4a90d9" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★★</span><span class="rcount">(52)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Océan Profond I</div>
+        <div class="c-ref">Ref. HO-4420 · 42mm Titanium</div>
+        <div class="c-desc">Ceramic unidirectional bezel, lume-charged indices, helium escape valve. 300m water resistance.</div>
+        <div class="c-tags"><span class="c-tag">Sport</span><span class="c-tag">300m WR</span><span class="c-tag">Auto 42h</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹12,80,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W002','Océan Profond I','1280000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WATCH 3 — Chronos I ═══ -->
+    <div class="card">
+      <div class="badge b-ltd">LTD</div>
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#1e0808 0%,#060202 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#150806" stroke="#c85030" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <rect x="44" y="56" width="112" height="144" rx="20" fill="#2a1008" stroke="#c85030" stroke-width="2"/>
+          <rect x="49" y="61" width="102" height="134" rx="17" fill="#150806"/>
+          <rect x="154" y="100" width="13" height="40" rx="5" fill="#1a0806" stroke="#c85030" stroke-width="1.3"/>
+          <rect x="154" y="96" width="11" height="8" rx="3" fill="#1a0806" stroke="#c85030" stroke-width="1.1"/>
+          <circle cx="100" cy="130" r="48" fill="#080200" stroke="#c85030" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="42" fill="#150806" stroke="#c85030" stroke-width="0.4" stroke-dasharray="1 4"/>
+          <circle cx="78" cy="130" r="11" fill="none" stroke="#c85030" stroke-width="0.7" opacity="0.5"/>
+          <circle cx="122" cy="130" r="11" fill="none" stroke="#c85030" stroke-width="0.7" opacity="0.5"/>
+          <rect x="97" y="86" width="6" height="14" rx="2" fill="#c85030"/>
+          <rect x="97" y="160" width="6" height="14" rx="2" fill="#c85030"/>
+          <rect x="144" y="127" width="14" height="6" rx="2" fill="#c85030"/>
+          <rect x="42" y="127" width="14" height="6" rx="2" fill="#c85030"/>
+          <text x="100" y="113" text-anchor="middle" fill="#c85030" font-size="6.5" font-family="Playfair Display,serif" letter-spacing="2.5">HOROLOGIUM</text>
+          <text x="100" y="124" text-anchor="middle" fill="#c85030" font-size="4" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.55">CHRONOGRAPH</text>
+          <line x1="100" y1="130" x2="100" y2="96" stroke="#c85030" stroke-width="3.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="131" y2="115" stroke="#c85030" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="74" y2="148" stroke="#ffaa00" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="4.5" fill="#c85030"/>
+          <circle cx="100" cy="130" r="2.2" fill="#150806"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#150806" stroke="#c85030" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#c85030" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★★</span><span class="rcount">(29)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Chronos I</div>
+        <div class="c-ref">Ref. HCH-3310 · 41mm Steel</div>
+        <div class="c-desc">Flyback chronograph with column wheel and vertical clutch. Pulsometer scale on bezel.</div>
+        <div class="c-tags"><span class="c-tag">Chronograph</span><span class="c-tag">50m WR</span><span class="c-tag">Flyback</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹22,00,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W003','Chronos I','2200000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WATCH 4 — Héritage Tourbillon ═══ -->
+    <div class="card">
+      <div class="badge b-rare">Rare</div>
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#100818 0%,#040206 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#0a0810" stroke="#9070c0" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <rect x="44" y="56" width="112" height="144" rx="20" fill="#1a1028" stroke="#9070c0" stroke-width="2"/>
+          <rect x="49" y="61" width="102" height="134" rx="17" fill="#0a0810"/>
+          <rect x="154" y="108" width="13" height="32" rx="5" fill="#130f1a" stroke="#9070c0" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="48" fill="#050308" stroke="#9070c0" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="42" fill="#0a0810" stroke="#9070c0" stroke-width="0.4" stroke-dasharray="1 4"/>
+          <rect x="97" y="86" width="6" height="14" rx="2" fill="#9070c0"/>
+          <rect x="97" y="160" width="6" height="14" rx="2" fill="#9070c0"/>
+          <rect x="144" y="127" width="14" height="6" rx="2" fill="#9070c0"/>
+          <rect x="42" y="127" width="14" height="6" rx="2" fill="#9070c0"/>
+          <text x="100" y="113" text-anchor="middle" fill="#9070c0" font-size="6.5" font-family="Playfair Display,serif" letter-spacing="2.5">HOROLOGIUM</text>
+          <text x="100" y="124" text-anchor="middle" fill="#9070c0" font-size="4" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.55">TOURBILLON</text>
+          <circle cx="100" cy="150" r="13" fill="none" stroke="#9070c0" stroke-width="0.9"/>
+          <circle cx="100" cy="150" r="9" fill="none" stroke="#9070c0" stroke-width="0.5" stroke-dasharray="2 2"/>
+          <line x1="100" y1="137" x2="100" y2="163" stroke="#9070c0" stroke-width="0.5" opacity="0.5"/>
+          <line x1="87" y1="150" x2="113" y2="150" stroke="#9070c0" stroke-width="0.5" opacity="0.5"/>
+          <line x1="100" y1="130" x2="100" y2="96" stroke="#9070c0" stroke-width="3.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="131" y2="115" stroke="#9070c0" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="74" y2="148" stroke="#cc2020" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="4.5" fill="#9070c0"/>
+          <circle cx="100" cy="130" r="2.2" fill="#0a0810"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#0a0810" stroke="#9070c0" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#9070c0" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★★</span><span class="rcount">(14)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Héritage Tourbillon</div>
+        <div class="c-ref">Ref. HHT-0771 · 39mm Platinum</div>
+        <div class="c-desc">Flying tourbillon at 6 o'clock. 78-hour power reserve. Côtes de Genève throughout.</div>
+        <div class="c-tags"><span class="c-tag">Heritage</span><span class="c-tag">30m WR</span><span class="c-tag">Tourbillon</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹58,00,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W004','Héritage Tourbillon','5800000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WATCH 5 — Céleste Moon Phase ═══ -->
+    <div class="card">
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#080c18 0%,#020406 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#06080e" stroke="#a0c0e8" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <rect x="44" y="56" width="112" height="144" rx="20" fill="#0e1428" stroke="#a0c0e8" stroke-width="2"/>
+          <rect x="49" y="61" width="102" height="134" rx="17" fill="#06080e"/>
+          <rect x="154" y="108" width="13" height="32" rx="5" fill="#0a0e18" stroke="#a0c0e8" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="48" fill="#030408" stroke="#a0c0e8" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="42" fill="#06080e" stroke="#a0c0e8" stroke-width="0.4" stroke-dasharray="1 4"/>
+          <circle cx="100" cy="152" r="11" fill="#1a1a30" stroke="#a0c0e8" stroke-width="0.7"/>
+          <circle cx="105" cy="152" r="9" fill="#06080e"/>
+          <rect x="97" y="86" width="6" height="14" rx="2" fill="#a0c0e8"/>
+          <rect x="97" y="160" width="6" height="14" rx="2" fill="#a0c0e8"/>
+          <rect x="144" y="127" width="14" height="6" rx="2" fill="#a0c0e8"/>
+          <rect x="42" y="127" width="14" height="6" rx="2" fill="#a0c0e8"/>
+          <text x="100" y="113" text-anchor="middle" fill="#a0c0e8" font-size="6.5" font-family="Playfair Display,serif" letter-spacing="2.5">HOROLOGIUM</text>
+          <text x="100" y="124" text-anchor="middle" fill="#a0c0e8" font-size="4" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.55">CÉLESTE</text>
+          <line x1="100" y1="130" x2="100" y2="96" stroke="#a0c0e8" stroke-width="3.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="131" y2="115" stroke="#a0c0e8" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="74" y2="148" stroke="#cc2020" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="4.5" fill="#a0c0e8"/>
+          <circle cx="100" cy="130" r="2.2" fill="#06080e"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#06080e" stroke="#a0c0e8" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#a0c0e8" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★½</span><span class="rcount">(21)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Céleste Moon Phase</div>
+        <div class="c-ref">Ref. HM-5580 · 40mm White Gold</div>
+        <div class="c-desc">Astronomical moon phase accurate to 122 years. Aventurine glass dial with meteorite inlay.</div>
+        <div class="c-tags"><span class="c-tag">Dress</span><span class="c-tag">30m WR</span><span class="c-tag">Moon Phase</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹28,00,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W005','Céleste Moon Phase','2800000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WATCH 6 — Rallye Chronograph ═══ -->
+    <div class="card">
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#141006 0%,#050402 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#0e0a04" stroke="#c9a84c" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <rect x="44" y="56" width="112" height="144" rx="20" fill="#1c1608" stroke="#c9a84c" stroke-width="2"/>
+          <rect x="49" y="61" width="102" height="134" rx="17" fill="#0e0a04"/>
+          <rect x="154" y="100" width="13" height="40" rx="5" fill="#1a1306" stroke="#c9a84c" stroke-width="1.3"/>
+          <rect x="154" y="96" width="11" height="8" rx="3" fill="#1a1306" stroke="#c9a84c" stroke-width="1.1"/>
+          <circle cx="100" cy="130" r="48" fill="#060401" stroke="#c9a84c" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="42" fill="#0e0a04" stroke="#c9a84c" stroke-width="0.4" stroke-dasharray="1 4"/>
+          <circle cx="78" cy="130" r="11" fill="none" stroke="#c9a84c" stroke-width="0.7" opacity="0.5"/>
+          <circle cx="122" cy="130" r="11" fill="none" stroke="#c9a84c" stroke-width="0.7" opacity="0.5"/>
+          <rect x="97" y="86" width="6" height="14" rx="2" fill="#c9a84c"/>
+          <rect x="97" y="160" width="6" height="14" rx="2" fill="#c9a84c"/>
+          <rect x="144" y="127" width="14" height="6" rx="2" fill="#c9a84c"/>
+          <rect x="42" y="127" width="14" height="6" rx="2" fill="#c9a84c"/>
+          <text x="100" y="113" text-anchor="middle" fill="#c9a84c" font-size="6.5" font-family="Playfair Display,serif" letter-spacing="2.5">HOROLOGIUM</text>
+          <text x="100" y="124" text-anchor="middle" fill="#c9a84c" font-size="4" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.55">RALLYE</text>
+          <line x1="100" y1="130" x2="100" y2="96" stroke="#c9a84c" stroke-width="3.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="131" y2="115" stroke="#c9a84c" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="74" y2="148" stroke="#cc2020" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="4.5" fill="#c9a84c"/>
+          <circle cx="100" cy="130" r="2.2" fill="#0e0a04"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#0e0a04" stroke="#c9a84c" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#c9a84c" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★★</span><span class="rcount">(33)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Rallye Chronograph</div>
+        <div class="c-ref">Ref. HR-6640 · 38mm Steel/Bronze</div>
+        <div class="c-desc">Racing-inspired tachymeter bezel and pump pushers. British Racing Green Cordura strap.</div>
+        <div class="c-tags"><span class="c-tag">Chronograph</span><span class="c-tag">30m WR</span><span class="c-tag">Manual</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹14,20,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W006','Rallye Chronograph','1420000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WATCH 7 — Aquaterre GMT ═══ -->
+    <div class="card">
+      <div class="badge b-hot">Bestseller</div>
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#061008 0%,#020402 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#040e08" stroke="#40c070" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <rect x="44" y="56" width="112" height="144" rx="20" fill="#081808" stroke="#40c070" stroke-width="2"/>
+          <rect x="49" y="61" width="102" height="134" rx="17" fill="#040e08"/>
+          <rect x="154" y="100" width="13" height="40" rx="5" fill="#061008" stroke="#40c070" stroke-width="1.3"/>
+          <rect x="154" y="96" width="11" height="8" rx="3" fill="#061008" stroke="#40c070" stroke-width="1.1"/>
+          <circle cx="100" cy="130" r="48" fill="#020602" stroke="#40c070" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="42" fill="#040e08" stroke="#40c070" stroke-width="0.4" stroke-dasharray="1 4"/>
+          <rect x="97" y="86" width="6" height="14" rx="2" fill="#40c070"/>
+          <rect x="97" y="160" width="6" height="14" rx="2" fill="#40c070"/>
+          <rect x="144" y="127" width="14" height="6" rx="2" fill="#40c070"/>
+          <rect x="42" y="127" width="14" height="6" rx="2" fill="#40c070"/>
+          <text x="100" y="113" text-anchor="middle" fill="#40c070" font-size="6.5" font-family="Playfair Display,serif" letter-spacing="2.5">HOROLOGIUM</text>
+          <text x="100" y="124" text-anchor="middle" fill="#40c070" font-size="4" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.55">GMT WORLD</text>
+          <line x1="100" y1="130" x2="119" y2="92" stroke="#40c070" stroke-width="1.9" stroke-linecap="round" stroke-dasharray="3 2"/>
+          <line x1="100" y1="130" x2="100" y2="96" stroke="#40c070" stroke-width="3.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="131" y2="115" stroke="#40c070" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="74" y2="148" stroke="#cc2020" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="4.5" fill="#40c070"/>
+          <circle cx="100" cy="130" r="2.2" fill="#040e08"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#040e08" stroke="#40c070" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#40c070" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★★</span><span class="rcount">(67)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Aquaterre GMT</div>
+        <div class="c-ref">Ref. HAG-7750 · 42mm Steel/Ceramic</div>
+        <div class="c-desc">Dual time zone with 24-city world time disc. Anti-reflective sapphire. For global travellers.</div>
+        <div class="c-tags"><span class="c-tag">Sport</span><span class="c-tag">200m WR</span><span class="c-tag">GMT Auto</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹16,50,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W007','Aquaterre GMT','1650000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WATCH 8 — Squelette I ═══ -->
+    <div class="card">
+      <div class="badge b-ltd">Limited</div>
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#141414 0%,#040404 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#080808" stroke="#c0c0c8" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.6)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.6)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.6)"/>
+          <rect x="44" y="56" width="112" height="144" rx="20" fill="#1a1a1a" stroke="#c0c0c8" stroke-width="2"/>
+          <rect x="49" y="61" width="102" height="134" rx="17" fill="#080808"/>
+          <rect x="154" y="108" width="13" height="32" rx="5" fill="#111111" stroke="#c0c0c8" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="48" fill="none" stroke="#c0c0c8" stroke-width="1.3"/>
+          <rect x="60" y="90" width="80" height="8" rx="2" fill="#1a1a1a" stroke="#c0c0c8" stroke-width="0.7"/>
+          <rect x="92" y="86" width="16" height="90" rx="2" fill="#1a1a1a" stroke="#c0c0c8" stroke-width="0.7"/>
+          <circle cx="100" cy="130" r="30" fill="none" stroke="#c0c0c8" stroke-width="0.9"/>
+          <circle cx="100" cy="130" r="16" fill="none" stroke="#c0c0c8" stroke-width="0.6" stroke-dasharray="2 2"/>
+          <text x="100" y="108" text-anchor="middle" fill="#c0c0c8" font-size="6" font-family="Playfair Display,serif" letter-spacing="2">SQUELETTE I</text>
+          <line x1="100" y1="130" x2="100" y2="96" stroke="#c0c0c8" stroke-width="3.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="131" y2="115" stroke="#c0c0c8" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="74" y2="148" stroke="#cc2020" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="4.5" fill="#c0c0c8"/>
+          <circle cx="100" cy="130" r="2.2" fill="#080808"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#080808" stroke="#c0c0c8" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#c0c0c8" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★★</span><span class="rcount">(19)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Squelette I</div>
+        <div class="c-ref">Ref. HS-8891 · 40mm Titanium DLC</div>
+        <div class="c-desc">Open-worked movement with 214 hand-beveled components. Black PVD bridges, mirror-polished.</div>
+        <div class="c-tags"><span class="c-tag">Limited</span><span class="c-tag">30m WR</span><span class="c-tag">Skeleton</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹42,00,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W008','Squelette I','4200000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WATCH 9 — Minuet Dress ═══ -->
+    <div class="card">
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#141006 0%,#060402 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#0c0a04" stroke="#e8c060" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <rect x="48" y="56" width="104" height="144" rx="22" fill="#201808" stroke="#e8c060" stroke-width="2"/>
+          <rect x="53" y="61" width="94" height="134" rx="19" fill="#0c0a04"/>
+          <rect x="152" y="114" width="11" height="24" rx="4" fill="#160e02" stroke="#e8c060" stroke-width="1.2"/>
+          <circle cx="100" cy="130" r="45" fill="#060401" stroke="#e8c060" stroke-width="1.1"/>
+          <circle cx="100" cy="130" r="39" fill="#0c0a04" stroke="#e8c060" stroke-width="0.35" stroke-dasharray="1 5"/>
+          <rect x="98.5" y="89" width="3" height="11" rx="1" fill="#e8c060"/>
+          <rect x="98.5" y="158" width="3" height="11" rx="1" fill="#e8c060"/>
+          <rect x="141" y="128.5" width="11" height="3" rx="1" fill="#e8c060"/>
+          <rect x="48" y="128.5" width="11" height="3" rx="1" fill="#e8c060"/>
+          <text x="100" y="115" text-anchor="middle" fill="#e8c060" font-size="6" font-family="Playfair Display,serif" letter-spacing="2">HOROLOGIUM</text>
+          <text x="100" y="125" text-anchor="middle" fill="#e8c060" font-size="3.8" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.55">MINUET</text>
+          <line x1="100" y1="130" x2="100" y2="101" stroke="#e8c060" stroke-width="2.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="127" y2="118" stroke="#e8c060" stroke-width="2" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="76" y2="146" stroke="#cc2020" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="3.5" fill="#e8c060"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#0c0a04" stroke="#e8c060" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#e8c060" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★½</span><span class="rcount">(44)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Minuet Dress</div>
+        <div class="c-ref">Ref. HD-1102 · 36mm Yellow Gold</div>
+        <div class="c-desc">Ultra-thin at 6.9mm total height. Lacquered cream dial with gold baton hands. Pure restraint.</div>
+        <div class="c-tags"><span class="c-tag">Dress</span><span class="c-tag">30m WR</span><span class="c-tag">Ultra-Thin</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹8,50,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W009','Minuet Dress','850000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WATCH 10 — Regulateur I ═══ -->
+    <div class="card">
+      <button class="wish">♡</button>
+      <div class="card-img" style="background:radial-gradient(ellipse at center,#100e04 0%,#040402 100%)">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="130" height="195">
+          <rect x="80" y="4" width="40" height="56" rx="8" fill="#0a0904" stroke="#c9a84c" stroke-width="1.4"/>
+          <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <circle cx="100" cy="22" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="36" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <circle cx="100" cy="50" r="2.5" fill="rgba(0,0,0,0.55)"/>
+          <rect x="44" y="56" width="112" height="144" rx="20" fill="#1a1606" stroke="#c9a84c" stroke-width="2"/>
+          <rect x="49" y="61" width="102" height="134" rx="17" fill="#0a0904"/>
+          <rect x="154" y="108" width="13" height="32" rx="5" fill="#141006" stroke="#c9a84c" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="48" fill="#050401" stroke="#c9a84c" stroke-width="1.3"/>
+          <circle cx="100" cy="130" r="42" fill="#0a0904" stroke="#c9a84c" stroke-width="0.4" stroke-dasharray="1 4"/>
+          <circle cx="100" cy="110" r="12" fill="none" stroke="#c9a84c" stroke-width="0.7" opacity="0.5"/>
+          <circle cx="100" cy="153" r="12" fill="none" stroke="#c9a84c" stroke-width="0.7" opacity="0.5"/>
+          <text x="100" y="101" text-anchor="middle" fill="#c9a84c" font-size="4.5" font-family="Montserrat,sans-serif" letter-spacing="1">HOURS</text>
+          <text x="100" y="171" text-anchor="middle" fill="#c9a84c" font-size="4.5" font-family="Montserrat,sans-serif" letter-spacing="1">SEC</text>
+          <text x="100" y="122" text-anchor="middle" fill="#c9a84c" font-size="6" font-family="Playfair Display,serif" letter-spacing="2">HOROLOGIUM</text>
+          <text x="100" y="133" text-anchor="middle" fill="#c9a84c" font-size="3.8" font-family="Montserrat,sans-serif" letter-spacing="2" opacity="0.55">RÉGULATEUR</text>
+          <line x1="100" y1="130" x2="100" y2="88" stroke="#c9a84c" stroke-width="3.8" stroke-linecap="round"/>
+          <line x1="100" y1="130" x2="100" y2="150" stroke="#c9a84c" stroke-width="2.2" stroke-linecap="round" opacity="0.35"/>
+          <line x1="100" y1="110" x2="105" y2="100" stroke="#c9a84c" stroke-width="2.2" stroke-linecap="round"/>
+          <line x1="100" y1="153" x2="96" y2="143" stroke="#cc2020" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="100" cy="130" r="4" fill="#c9a84c"/>
+          <rect x="80" y="238" width="40" height="56" rx="8" fill="#0a0904" stroke="#c9a84c" stroke-width="1.4"/>
+          <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.4)"/>
+          <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.5)" stroke="#c9a84c" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="rating"><span class="stars">★★★★★</span><span class="rcount">(27)</span></div>
+        <div class="c-brand">Horologium</div>
+        <div class="c-name">Regulateur I</div>
+        <div class="c-ref">Ref. HRG-5010 · 38mm Steel</div>
+        <div class="c-desc">Classic regulator display — hours, minutes, and seconds on three separate axes for precision reading.</div>
+        <div class="c-tags"><span class="c-tag">Heritage</span><span class="c-tag">30m WR</span><span class="c-tag">Hand-Wind</span></div>
+        <div class="card-footer">
+          <div>
+            <div class="price-lbl">Starting at</div>
+            <div class="price">₹19,50,000</div>
+            <div class="gst">Incl. 18% GST</div>
+          </div>
+          <button class="atc" onclick="addToCart('W010','Regulateur I','1950000',this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
 </section>
 
-<!-- MARQUEE 2 -->
-<div class="marquee-strip"><div class="marquee-inner" id="mq2" style="animation-direction:reverse;animation-duration:22s"></div></div>
-
-<!-- BANNER -->
-<section class="banner">
-  <div>
-    <div class="eyebrow" style="margin-bottom:18px;">The Atelier Experience</div>
-    <h2 class="banner-title">Crafted with <em>obsession</em>,<br/>worn with confidence.</h2>
-    <p class="banner-body">Every Horologium watch passes through the hands of twelve specialist craftsmen before reaching a collector. 340 hours per piece — because excellence demands nothing less.</p>
-    <a href="aboutus.html" class="btn btn-gold">Discover Our Story</a>
+<!-- EDITORIAL BANNER -->
+<div class="editorial">
+  <div class="ed-l">
+    <div class="ed-tag">The Atelier Experience</div>
+    <h2 class="ed-h2">Crafted with <em>obsession</em>,<br/>worn with confidence.</h2>
+    <p class="ed-p">Every Horologium watch passes through the hands of at least twelve specialist craftsmen before reaching a collector. We spend an average of 340 hours per piece — excellence demands nothing less.</p>
+    <a href="aboutus.html" class="btn-gold" style="align-self:flex-start;display:inline-block">Discover Our Story</a>
   </div>
-  <div class="banner-visual" id="bannerWatch"></div>
-</section>
+  <div class="ed-r">
+    <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" width="230" height="345" style="position:relative;z-index:2">
+      <rect x="80" y="4" width="40" height="56" rx="8" fill="#100d06" stroke="#c9a84c" stroke-width="1.5"/>
+      <rect x="85" y="9" width="30" height="46" rx="6" fill="rgba(0,0,0,0.42)"/>
+      <circle cx="100" cy="22" r="2.6" fill="rgba(0,0,0,0.6)"/>
+      <circle cx="100" cy="36" r="2.6" fill="rgba(0,0,0,0.6)"/>
+      <circle cx="100" cy="50" r="2.6" fill="rgba(0,0,0,0.6)"/>
+      <rect x="44" y="56" width="112" height="144" rx="20" fill="#221a08" stroke="#c9a84c" stroke-width="2.2"/>
+      <rect x="49" y="61" width="102" height="134" rx="17" fill="#100d06"/>
+      <rect x="154" y="108" width="13" height="32" rx="5" fill="#1a1306" stroke="#c9a84c" stroke-width="1.4"/>
+      <circle cx="100" cy="130" r="48" fill="#060401" stroke="#c9a84c" stroke-width="1.4"/>
+      <circle cx="100" cy="130" r="42" fill="#100d06" stroke="#c9a84c" stroke-width="0.45" stroke-dasharray="1 4"/>
+      <rect x="97" y="86" width="6" height="14" rx="2" fill="#c9a84c"/>
+      <rect x="97" y="160" width="6" height="14" rx="2" fill="#c9a84c"/>
+      <rect x="144" y="127" width="14" height="6" rx="2" fill="#c9a84c"/>
+      <rect x="42" y="127" width="14" height="6" rx="2" fill="#c9a84c"/>
+      <text x="100" y="113" text-anchor="middle" fill="#c9a84c" font-size="6.8" font-family="Playfair Display,serif" letter-spacing="2.5">HOROLOGIUM</text>
+      <text x="100" y="124" text-anchor="middle" fill="#c9a84c" font-size="4" font-family="Montserrat,sans-serif" letter-spacing="2.2" opacity="0.55">GENEVE · EST. 1977</text>
+      <circle cx="100" cy="150" r="12" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <line x1="100" y1="150" x2="100" y2="142" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+      <line x1="100" y1="130" x2="100" y2="96" stroke="#c9a84c" stroke-width="4" stroke-linecap="round"/>
+      <line x1="100" y1="130" x2="132" y2="115" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+      <line x1="100" y1="130" x2="74" y2="148" stroke="#cc2020" stroke-width="1.7" stroke-linecap="round"/>
+      <circle cx="100" cy="130" r="5" fill="#c9a84c"/>
+      <circle cx="100" cy="130" r="2.4" fill="#100d06"/>
+      <rect x="80" y="238" width="40" height="56" rx="8" fill="#100d06" stroke="#c9a84c" stroke-width="1.5"/>
+      <rect x="85" y="243" width="30" height="46" rx="6" fill="rgba(0,0,0,0.42)"/>
+      <rect x="90" y="278" width="20" height="10" rx="3" fill="rgba(0,0,0,0.55)" stroke="#c9a84c" stroke-width="0.9"/>
+    </svg>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="why">
+  <div class="why-item">
+    <div class="why-ico">🇨🇭</div>
+    <div class="why-t">Swiss Made</div>
+    <div class="why-d">Every movement manufactured and cased in Switzerland. COSC certified to ±2 seconds per day.</div>
+  </div>
+  <div class="why-item">
+    <div class="why-ico">✦</div>
+    <div class="why-t">Hand Finishing</div>
+    <div class="why-d">Côtes de Genève, perlage, and mirror-polished anglage on every movement component.</div>
+  </div>
+  <div class="why-item">
+    <div class="why-ico">📦</div>
+    <div class="why-t">White Glove Delivery</div>
+    <div class="why-d">Fully insured delivery across India in a hand-stitched presentation box with service booklet.</div>
+  </div>
+  <div class="why-item">
+    <div class="why-ico">♾</div>
+    <div class="why-t">Lifetime Service</div>
+    <div class="why-d">We service every watch we have ever made — in perpetuity. All spare parts maintained forever.</div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="nl-tag">Collector's Circle</div>
+  <h2 class="nl-h2">Join the <em>Inner Circle</em></h2>
+  <p class="nl-p">New arrivals, limited releases, and exclusive horology insights to your inbox.</p>
+  <div class="nl-form">
+    <input type="email" id="nlEmail" placeholder="Your email address…"/>
+    <button onclick="nlSubmit()">Subscribe</button>
+  </div>
+</div>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div><div class="footer-logo">HOROLOGIUM</div><p class="footer-tagline">Purveyor of extraordinary timepieces since 1977. Geneva, Switzerland.</p></div>
-    <div class="footer-col"><h5>Collection</h5><ul><li><a href="watches.html">All Watches</a></li><li><a href="watches.html?cat=dress">Dress</a></li><li><a href="watches.html?cat=sport">Sport</a></li><li><a href="watches.html?cat=limited">Limited Editions</a></li></ul></div>
-    <div class="footer-col"><h5>Company</h5><ul><li><a href="aboutus.html">About Us</a></li><li><a href="contactus.html">Contact</a></li></ul></div>
-    <div class="footer-col"><h5>Services</h5><ul><li><a href="#">Authentication</a></li><li><a href="#">Servicing</a></li><li><a href="#">Bespoke Orders</a></li></ul></div>
+<footer>
+  <div class="f-grid">
+    <div>
+      <div class="f-logo">HOROLOGIUM</div>
+      <p class="f-tag">Purveyor of extraordinary timepieces since 1977. Crafted in Geneva, delivered to India with care.</p>
+    </div>
+    <div class="f-col">
+      <h5>Collection</h5>
+      <ul>
+        <li><a href="watches.html">All Watches</a></li>
+        <li><a href="watches.html?cat=dress">Dress Watches</a></li>
+        <li><a href="watches.html?cat=sport">Sport Watches</a></li>
+        <li><a href="watches.html?cat=chronograph">Chronographs</a></li>
+        <li><a href="watches.html?cat=limited">Limited Editions</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="cart.html">Your Cart</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Servicing</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-bottom"><p>© 2025 HOROLOGIUM SA. All Rights Reserved.</p><p>Privacy · Terms · Returns</p></div>
+  <div class="f-bottom">
+    <p>© 2025 HOROLOGIUM SA, Geneva, Switzerland. All Rights Reserved.</p>
+    <p>Privacy Policy · Terms & Conditions</p>
+  </div>
 </footer>
 
-<script src="watches-data.js"></script>
+<!-- ═══════════ INLINE CART SCRIPT — NO LOCALSTORAGE ═══════════ -->
 <script>
-// Hero watch
-document.getElementById('heroWatch').innerHTML = generateWatchSVG(WATCHES[3], 300);
-// Banner watch
-document.getElementById('bannerWatch').innerHTML = generateWatchSVG(WATCHES[0], 240);
+/* Cart lives in a plain JS array — resets on page load, 
+   badge persists via sessionStorage just for the badge number */
+var cart = [];
+try { cart = JSON.parse(sessionStorage.getItem('hCart') || '[]'); } catch(e){ cart = []; }
 
-// Marquee
-var MQ = ['Swiss Movement','Sapphire Crystal','COSC Certified','Hand Finishing','18k Gold Cases','Limited Editions','White Glove Delivery','Lifetime Service','Geneva Hallmark','Water Resistance'];
-function buildMQ(id, rev) {
-  var items = MQ.concat(MQ);
-  document.getElementById(id).innerHTML = items.map(function(t){
-    return '<div class="marquee-item"><span>◆</span>'+t+'</div>';
-  }).join('');
+function updateBadge(){
+  document.getElementById('badge').textContent = cart.length;
 }
-buildMQ('mq1'); buildMQ('mq2');
+updateBadge();
 
-// Featured cards (first 4 watches)
-function buildCard(w) {
-  var inCart = getCart().find(function(c){ return c.id === w.id; });
-  return '<div class="watch-card">'+
-    '<div class="watch-card-img" style="background:radial-gradient(ellipse at center,'+w.bg+' 0%,#030201 100%);">'+
-      generateWatchSVG(w, 140)+
-      (w.badge ? '<div class="watch-badge badge-'+w.badge+'">'+w.badge.toUpperCase()+'</div>' : '')+
-    '</div>'+
-    '<div class="watch-card-body">'+
-      '<div class="watch-card-brand">'+w.brand+'</div>'+
-      '<div class="watch-card-name">'+w.name+'</div>'+
-      '<div class="watch-card-ref">Ref. '+w.ref+'</div>'+
-      '<div class="watch-card-desc">'+w.info+'</div>'+
-      '<div class="watch-card-footer">'+
-        '<div><div class="price-label">Price (incl. GST)</div><div class="price-val">'+fmtINR(w.price)+'</div></div>'+
-        '<button class="btn-add-cart'+(inCart?' in-cart':'')+'" data-watch-id="'+w.id+'" onclick="addToCart(\''+w.id+'\')">'+
-          (inCart ? 'In Cart \u2713' : 'Add to Cart')+
-        '</button>'+
-      '</div>'+
-    '</div>'+
-  '</div>';
+function addToCart(id, name, rawPrice, btn){
+  /* Prevent duplicate */
+  for(var i = 0; i < cart.length; i++){
+    if(cart[i].id === id){
+      showToast('Already in your cart');
+      return;
+    }
+  }
+  var price = parseInt(rawPrice, 10);
+  cart.push({ id:id, name:name, price:price });
+  try{ sessionStorage.setItem('hCart', JSON.stringify(cart)); } catch(e){}
+
+  updateBadge();
+
+  /* Button feedback */
+  btn.textContent = 'In Cart ✓';
+  btn.classList.add('done');
+
+  showToast(name + ' added to cart');
+
+  /* ── DataLayer purchase-funnel event ── */
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'add_to_cart',
+    ecommerce: {
+      currency: 'INR',
+      value: price,
+      items: [{
+        item_id:       id,
+        item_name:     name,
+        item_brand:    'Horologium',
+        price:         price,
+        quantity:      1
+      }]
+    }
+  });
+  console.log('📊 add_to_cart → dataLayer', id, name, '₹' + price.toLocaleString('en-IN'));
 }
 
-document.getElementById('featGrid').innerHTML = WATCHES.slice(0,4).map(buildCard).join('');
+function showToast(msg){
+  var t = document.getElementById('toast');
+  document.getElementById('tmsg').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+}
 
-trackPageView('Home','/index.html');
+function nlSubmit(){
+  var v = document.getElementById('nlEmail').value.trim();
+  if(v && v.indexOf('@') > 0){
+    showToast('Thank you for subscribing!');
+    document.getElementById('nlEmail').value = '';
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event:'newsletter_signup', email_domain: v.split('@')[1] });
+  } else {
+    showToast('Please enter a valid email.');
+  }
+}
+
+/* Page view */
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({ event:'page_view', page_name:'Home', page_path:'/index.html', currency:'INR' });
 </script>
 </body>
 </html>
